@@ -11,7 +11,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -27,9 +29,12 @@ import org.jetbrains.compose.resources.painterResource
 import ui.common.NormalText
 import ui.common.SpecialWhiteText
 import ui.common.SpeechLayout
+import ui.screen.GameEffectScreen
 import ui.screen.GameSettingsScreen
+import ui.vm.GameEffect
 import ui.vm.GameEvent
 import ui.vm.GameViewModel
+import utils.observeEffect
 import kotlin.system.exitProcess
 
 @OptIn(ExperimentalResourceApi::class)
@@ -39,6 +44,7 @@ fun GameScene(navigator: Navigator) {
         GameViewModel()
     }
     val state by viewModel.uiState.collectAsStateWithLifecycle()
+    var effectType by remember { mutableStateOf("") }
 
     Box(
         modifier = Modifier
@@ -110,11 +116,32 @@ fun GameScene(navigator: Navigator) {
                     viewModel.dispatch(GameEvent.ShowSettings(show = !showSettings))
                 }
         )
+
+        GameEffectScreen(
+            type = effectType,
+            onAfterEffect = {
+                effectType = ""
+                viewModel.dispatch(GameEvent.ClickNext)
+            }
+        )
     }
 
     LaunchedEffect(Unit) {
         val xmlText = getScenarioXML("game_scenario_jp.xml")
         viewModel.dispatch(GameEvent.LoadScenario(xmlText))
+    }
+
+    LaunchedEffect(Unit) {
+        viewModel.uiEffect.observeEffect {
+            effectType = when (it) {
+                is GameEffect.RedTurnEffect -> {
+                    GameTypes.Effect.RedTurn
+                }
+                is GameEffect.ClimaxBlinkEffect -> {
+                    GameTypes.Effect.ClimaxBlink
+                }
+            }
+        }
     }
 }
 
