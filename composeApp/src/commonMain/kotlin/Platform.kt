@@ -1,5 +1,7 @@
-interface Platform {
-    val name: String
-}
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 
-expect fun getPlatform(): Platform
+@Composable
+expect fun getFont(name: String, res: String, weight: FontWeight, style: FontStyle): Font
