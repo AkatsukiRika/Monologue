@@ -15,8 +15,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import getScenarioXML
+import models.GameTypes
 import moe.tlaster.precompose.flow.collectAsStateWithLifecycle
 import moe.tlaster.precompose.navigation.Navigator
 import moe.tlaster.precompose.viewmodel.viewModel
@@ -30,6 +32,7 @@ import ui.vm.GameEvent
 import ui.vm.GameViewModel
 import kotlin.system.exitProcess
 
+@OptIn(ExperimentalResourceApi::class)
 @Composable
 fun GameScene(navigator: Navigator) {
     val viewModel = viewModel(GameViewModel::class) {
@@ -45,6 +48,25 @@ fun GameScene(navigator: Navigator) {
                 viewModel.dispatch(GameEvent.ClickNext)
             }
     ) {
+        val backImage = GameTypes.Back.getImage(state.currentBack)
+        if (backImage != null) {
+            Image(
+                painter = painterResource(backImage),
+                modifier = Modifier.fillMaxSize(),
+                contentDescription = null,
+                contentScale = ContentScale.Crop
+            )
+        }
+
+        val frontImage = GameTypes.Front.getImage(state.currentFront)
+        if (frontImage != null) {
+            Image(
+                painter = painterResource(frontImage),
+                contentDescription = null,
+                modifier = Modifier.align(Alignment.BottomCenter)
+            )
+        }
+
         when {
             state.showSpecialWhiteText -> {
                 SpecialWhiteText(
