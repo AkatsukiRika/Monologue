@@ -1,0 +1,223 @@
+<scenario language="jp">
+    <scene id="0" back="black">
+        <text type="special-white">時間以外の何もなかった、あの丘の上の街で、\n二人は、確かに生きていた。</text>
+    </scene>
+
+    <scene id="1" back="room" front="girl-wry-neck">
+        <text type="speech" character="りえ" time="6/1">「来たよ！」</text>
+        <text type="normal">今日も、チャイムすら鳴らさず「彼女」が部屋に飛び込んでくる。</text>
+        <text type="normal">夏服。そうか、今日から六月なんだな。ということは、昨日がセーラー服の脱がし納めだったという事か。正確には、最近は脱がす手間さえ惜しんでいるのだけど。</text>
+        <text type="normal">服に匂いが移るとマズイから、と、強制的に禁煙を強いられてからどれくらい経ったのだろう。普通、禁煙すると体重が増えるというけれど、そんなことは無かった。</text>
+        <text type="normal">何も無い街。何も無い部屋。やることは、一つしかなかった。</text>
+        <text type="normal">鳴り物入りで開発分譲された、里ヶ丘（30年前の）「ニュー」タウン。アクセス性の悪さと、複雑な利権その他諸事情による強引な開発も頓挫して、ハンコで押したような家がまばらに建ち…一斉に老い始めていた街。</text>
+        <text type="normal">唯一、誘致された三流大学が街の死を遅らせているような街。</text>
+        <text type="normal">時間以外の何もなかった、あの丘の上の街で、\n二人は、確かに生きていた。</text>
+    </scene>
+
+    <scene id="2" back="studio" front="girl-wry-neck">
+        <text type="normal">街に一軒きりの潰れそうな楽器屋の、音が漏れまくりのスタジオで、特に明確な目標とか野心とかも無く、轟音を鳴らし続けていた。</text>
+        <text type="normal">華奢で女の子みたいな風貌で、鈍重な鉈のようなリフを刻むギターのKと、生で蝙蝠を食いちぎっても全く違和感のないドラムのDと、イマイチ存在感が薄いが一応は作詞とベース担当の自分と。</text>
+        <text type="normal">そして、隅っこに座ってグダグダな練習風景を飽きもせず眺め続けていた「彼女」と。</text>
+        <text type="normal">どこにでも在るような風景。</text>
+        <text type="normal">何故、自分だったんだろう？</text>
+        <text type="normal">それを、本能の気まぐれさ、と理解していた。事実、そうだったのかもしれない。それでも、帰り道、Kと別れ、Dもバイトに行き気が付けば「彼女」はついてきた。</text>
+        <text type="normal">何も無かった、自分の部屋まで。</text>
+    </scene>
+
+    <scene id="3" back="building" front="girl-serious">
+        <text type="normal">何度も、家に帰るように諭した。</text>
+        <text type="normal">犯罪を怖れたわけじゃない。畏れたのは、もっと別のことだった。</text>
+        <text type="normal">だけど無駄だった。彼女は頑なだった。</text>
+        <text type="normal">自分の部屋へのドアが、世界を分つ境界だった。それを開ければ、戻れなくなると解っていた。</text>
+        <text type="normal">だから、俺は、脅した。他愛の無い昔話。</text>
+        <text type="normal">大抵のモノは手に入ったこと。</text>
+        <text type="normal">だけど本当に望んでいたものは手に入らなかったこと。</text>
+        <text type="normal">憧れていた清楚な娘はAV主演が発覚しクラスから居なくなったこと。</text>
+        <text type="normal">自分に思いを寄せてくれた少女は、好みではなかったにもかかわらず、これ幸いに、さながら生体実験の道具として、滅茶苦茶に破壊したこと。</text>
+        <text type="normal">それでも、どんな要求でも拒まなかったこと。</text>
+        <text type="normal">もう、試してみたいことも無くなったこと。</text>
+        <text type="normal">やがて、その少女は本当に壊れてしまったこと。</text>
+        <text type="normal">それでも、罪悪感すらなかったこと。</text>
+    </scene>
+
+    <scene id="4" back="black">
+        <text type="normal">ただただ、代替感と空虚感しか無かったこと。</text>
+        <text type="normal">家族は穏やかだった。</text>
+        <text type="normal">その平凡を嫌悪し、ある日、家を出た。</text>
+        <text type="normal">生活の糧は無く、自分を売ったり、他人を売ったりしていた。自分が壊した人に加えたことが、どれだけ残虐であったか、身を以って、精神を以って、初めて思い知った。</text>
+        <text type="normal">金回りは良かった。</text>
+        <text type="normal">代償は、履歴書が汚れたことと、セックスに対する幻想が失われ、もううんざりだと思ったこと。</text>
+        <text type="normal">しかし、「彼女」は怯まなかった。</text>
+    </scene>
+
+    <scene id="5" back="room" front="girl-serious">
+        <text type="speech" character="りえ" time="9/18 夕">「それは、壊れた人の思いが弱かっただけの事だから。」</text>
+        <effect type="red-turn" />
+    </scene>
+
+    <scene id="6" back="room" front="girl-wry-neck">
+        <text type="normal">一撃で。</text>
+        <text type="normal">ブッ壊されていたのは自分だった。</text>
+        <text type="normal">卑怯なのは、自分。今更そんな過ぎた話をしても、贖罪になどなりもしないのに。</text>
+        <text type="normal">「彼女」が、それで引き下がるとも思っていないのに。自分が決めなかったこと。</text>
+        <text type="normal">「彼女」に決めされたこと。それは責任回避以外の何だというのだろう？呪われろ自分。</text>
+        <text type="normal">どうして、そんなふうに、生きながら自分を埋葬するような生き方をしようとするの？</text>
+        <text type="normal">あなたには私もいるけれど、私にはあなたしか、いないんだよ。</text>
+    </scene>
+
+    <scene id="7" back="room" front="girl-happy">
+        <text type="normal">扉は、開いた。</text>
+        <text type="normal">その先にあるのは、とっくの昔に諦め尽くしたはずの世界。自分に愛されるに値するだけの価値があるとは到底思えなかった。</text>
+        <text type="normal">自分の、どこが？</text>
+        <text type="normal">そうやって、常に、「理由」を必要とするのが、自分の悪癖。</text>
+        <text type="normal">そんなに理屈じゃない領域なんだよ。</text>
+        <text type="normal">自分はこれから「彼女」に壊され、そして再構築されるんだ。彼女は本当に痛がった。</text>
+        <text type="normal">なのに、何故、自分が涙を流しているんだろう？</text>
+        <text type="normal">何故、自分の快楽のために、最後まで続けることができなかったんだろう？</text>
+        <text type="normal">何故、終わったフリなどしたんだろう？</text>
+        <text type="normal">もしかしたら自分は、人間に戻れるかもしれない。</text>
+        <text type="normal">その時、そう思えたんだ。</text>
+        <text type="normal">それと、諦め尽くしたその後に手に入った運命の皮肉を少しと。</text>
+    </scene>
+
+    <scene id="8" back="room" front="girl-wry-neck">
+        <text type="speech" character="りえ" time="9/23 夕">「私まだ子供だから、『彼女』じゃなくて『彼子』だよね！」</text>
+    </scene>
+
+    <scene id="9" back="street" front="girl-happy">
+        <text type="normal">それからは陳腐なエロゲも赤面するような日々だった。</text>
+        <text type="normal">給食の残りで養われたりした。</text>
+        <text type="normal">修学旅行先から、イニシャルを彫った楽器型のキーホルダーのお土産など買ってきてくれた。</text>
+        <text type="normal">日曜日、彼女の母校に忍び込んだ。</text>
+        <text type="normal">「ついこの間まで私、ここにいたんだね」</text>
+        <text type="normal">「明るい子」拙いお習字が並んで貼られている無人の教室の壁に手をつかせて、事に及ぶ。</text>
+        <text type="normal">そのあまりのギャップに脳が溶けそうになる。</text>
+    </scene>
+
+    <scene id="10" back="room" front="girl-shy">
+        <text type="normal">ちょうど二週間くらいだったと思う。</text>
+        <text type="normal">「イクってのがどういうことか、解ってきたろ？」</text>
+        <effect type="climax-blink" />
+        <text type="normal">誘導に促されるままにコクっと頷いて、やがて余韻も醒めて我に帰ってから「…死んじゃえ！」ってブッ飛ばされたっけ。</text>
+        <text type="normal">それから、一週間に平均20回は。</text>
+        <text type="normal">昔は、こういうことしたいと思ってんだな、と、漠然と思いながら。</text>
+    </scene>
+
+    <scene id="11" back="room" front="girl-happy">
+        <text type="normal">一度パンドラの箱が開くと、あとは早かった。</text>
+        <text type="normal">際限なく貪欲になっていくだけだった。</text>
+        <text type="normal">そして、フラッシュバックのような、遅れてきた罪悪感めいたものを抱えていった。何故、今、当然のことのように享受している幸福を、自分は与えることができなかったんだろう？と。代わりに、絶望と精神の破壊しか与えられなかったんだろう、と。果たして自分は、これを享受する資格があるのだろうか、と。</text>
+        <text type="normal">そんな微かな澱みも、怠惰で甘美な時間と共に溶けて雲散霧消していく。</text>
+        <text type="normal">殆ど毎日、夕方、彼女がやってくるのを待つ生活。</text>
+        <text type="normal">携帯嫌いな自分は、連絡手段を何一つ持たなかった。</text>
+        <text type="normal">「また来るね。」</text>
+        <text type="normal">その言葉以外に、何の保証も無い、極めて細い糸で辛うじて繋がっているような毎日。</text>
+        <text type="normal">ずっとそんな日々が続くはずもないのに。</text>
+        <text type="normal">時間はゆっくり流れているのではなく、ただ、塞ぎ止められて溜まっていっただけなのに。</text>
+        <effect type="red-turn" />
+    </scene>
+
+    <scene id="12" back="room">
+        <text type="normal">ある日を境に、前触れなく「彼女」が消えた。</text>
+        <text type="normal">十日経った。</text>
+        <text type="normal">一月経った。</text>
+        <text type="normal">「ああ、やっぱりか。」と思った。</text>
+        <text type="normal">所詮、残酷な遺伝子の神が司る、本能の気まぐれだったのさ、と。</text>
+        <text type="normal">自分には勿体無い、過分な日々も終わり。</text>
+        <text type="normal">ゼロ地点に戻っただけのこと。</text>
+    </scene>
+
+    <scene id="13" back="black">
+        <text type="normal">それでおしまい。\nだったら、どれほど救われたことだろう。</text>
+        <text type="normal">本当の「終わりの始まり」は、三月後に始まった。</text>
+        <effect type="red-turn" />
+    </scene>
+
+    <scene id="14" back="room" front="girl-mature">
+        <text type="speech" character="りえ" time="9/26 昼">「来たよ！」</text>
+    </scene>
+
+    <scene id="15" back="door" front="girl-mature">
+        <text type="normal">夏が過ぎ、秋も往きかけた頃、前触れ一つ無く「彼女」が部屋に飛び込んできた。</text>
+        <text type="normal">何が来たというのか。</text>
+        <text type="normal">飛び込んできた「彼女」を抱擁した時、全て、瞬時に理解した。</text>
+        <text type="normal">その肉の感触は、嫌というほどに知っていた。かつて妊娠していた女のそれ。</text>
+        <text type="normal">そして、自分が理解したことは、すぐに伝わった。</text>
+    </scene>
+
+    <scene id="16" back="black" front="girl-scared">
+        <text type="special-red">「どうしてわかっちゃうのおおおおぉおおおお？」</text>
+    </scene>
+
+    <scene id="17" back="room-scary">
+        <text type="scary">慟哭。</text>
+        <text type="scary">人の「思いの丈」を甘く見ていた。</text>
+        <text type="scary">自分に告げたら、どんな、出来もしない結論を導き出すか、「彼女」は解っていた。</text>
+        <text type="scary">だから、一人きりで決めて、一人きりで負ったんだ。</text>
+        <text type="scary">始まりもまた、そうであったように。</text>
+    </scene>
+
+    <scene id="18" back="scary">
+        <text type="scary">ごめんね。ごめんね。</text>
+        <text type="scary">刃物で腕から乳房から切りまくる「彼女」を、俺はただ力ずくで押し倒し、刃物を振るえなくするしかできなかった。</text>
+        <text type="scary">もはや、いたわりとか慈愛とかを喪失した、ほんのひととき、思考停止させる以外の目的も効力も持たないセックス。</text>
+        <text type="scary">効いている時間が日々短くなるばかりの、希望の無い延命のような。</text>
+        <text type="scary">「彼女」が来る日は、やがて減っていく。一日おき、二日おき…それすら、その他大勢の中の塵の一つに過ぎない、ある関係がゆっくりと臨終していく。</text>
+        <text type="scary">…やがて、心電図は、一本の平坦な線を描いた。</text>
+        <effect type="invert-color" />
+    </scene>
+
+    <scene id="19" back="hospital">
+        <text type="normal">今度は、今度こそ、待たなかった。</text>
+        <text type="normal">初めて訪れた「彼女」の家を見た。そして、これまで、家族の事を一切話していなかったことの意味を知った。叩きつけられるように。</text>
+        <text type="normal">荒れ果てた庭。動かない錆びた自転車。鍵のかかっていない玄関。饐えた匂い。アルコールの空瓶が散乱したキッチン。</text>
+        <text type="normal">「今月分」と無造作にメモに書き添えられた、一万円札が数枚。壁には穴。叩き割られた古い古い写真。</text>
+        <text type="normal">まるで獣道のような、そこだけは埃の積もっていない足跡に導かれたその先、二階の奥、その中にいた、抜け殻のような何かは、ストレッチャーに乗せられ、サイレンの音と共に遠ざかっていった。</text>
+        <text type="normal">生きてはいた。</text>
+        <text type="normal">ただ、それだけ。</text>
+        <text type="normal">施設に入所することになったと、後で担当の刑事さんが教えてくれた。</text>
+        <effect type="turn-white" />
+    </scene>
+
+    <scene id="20" back="smoke" front="girl-wry-neck-opacity">
+        <text type="normal">それは願望が生んだ夢だったかもしれない。</text>
+        <text type="normal">ある夜、携帯が初めて鳴った。</text>
+        <text type="normal">幸せそうな声だった。</text>
+        <text type="normal">眠たげな声だった。</text>
+        <text type="normal">穏やかな声だった。</text>
+        <text type="normal">何を飲んだかは知らない。ただ、致死量を遥かに超えていた。</text>
+        <text type="normal">次第に呂律が回らなくなる言葉を、最後まで最後まで繰り返す。</text>
+        <text type="normal">やがて何も聞こえなくなった。300kmの彼方で。</text>
+        <text type="normal">それは俺の台詞じゃなかったのか？</text>
+        <text type="normal">ごめんね。ありがとう。ごめんね。ありがとう。ごめんね。ありがとう。</text>
+        <effect type="change-front" front="girl-happy-opacity" />
+        <effect type="show-image" image="girl-pregnant-phone" />
+    </scene>
+
+    <scene id="21" back="trash">
+        <text type="normal">「この手を離さないで」</text>
+        <text type="normal">それからも何度か、手を差し伸べられたことがあった。</text>
+        <text type="normal">決して振り返りはしなかったけど。</text>
+        <text type="normal">それが、生きながら自分を埋蔵するような生き方だとしても。</text>
+        <text type="normal">「そんなので、自分を罰しているつもりなの？」</text>
+        <text type="normal">遠く聴こえる、悪戯っぽいその声はきっと空耳。</text>
+        <text type="normal">「私は幸せだよ？」</text>
+        <effect type="change-front" front="girl-mature-happy-opacity" />
+        <effect type="change-front" front="girl-serious" />
+    </scene>
+
+    <scene id="22" back="room">
+        <text type="normal">失くしたのは、死へ向かう恐怖。いや、痛いの苦しいのは嫌だけど。死は救済。だから、できるだけ、長く、生きる。</text>
+        <text type="normal">神なんて信じていない。それでも、時折、日常の雑音がふと途切れた時、思い出したりするんだ。</text>
+        <text type="normal">もし、何かの手違いで死後も意識が残ってしまったなら、迷うことなく、ある時間、ある空間に還るんだ。</text>
+    </scene>
+
+    <scene id="23" back="room-dark">
+        <text type="special-yellow">時間以外の何もなかった、あの丘の上の街で、\nまるで出口のない子宮のような、あの部屋に。</text>
+        <effect type="change-front" front="girl-wry-neck" />
+    </scene>
+
+    <scene id="24" back="black">
+        <text type="special-white">BAD END</text>
+    </scene>
+</scenario>

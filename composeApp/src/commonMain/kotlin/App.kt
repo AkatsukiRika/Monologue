@@ -3,8 +3,8 @@ import global.Routes
 import moe.tlaster.precompose.PreComposeApp
 import moe.tlaster.precompose.navigation.NavHost
 import moe.tlaster.precompose.navigation.rememberNavigator
-import ui.GameScene
-import ui.StartScene
+import ui.scene.GameScene
+import ui.scene.StartScene
 
 @Composable
 fun App() {
