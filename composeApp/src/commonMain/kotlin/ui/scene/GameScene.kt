@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import getScenarioXML
 import models.GameTypes
 import moe.tlaster.precompose.flow.collectAsStateWithLifecycle
@@ -90,6 +91,8 @@ fun GameScene(navigator: Navigator) {
                     modifier = Modifier
                         .align(Alignment.BottomCenter)
                         .padding(start = 16.dp, end = 16.dp, bottom = 16.dp),
+                    textModifier = Modifier.padding(all = 12.dp),
+                    lineHeight = 24.sp,
                     state = state
                 )
             }

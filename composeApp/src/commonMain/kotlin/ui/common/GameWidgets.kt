@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ui.vm.GameState
@@ -31,7 +32,13 @@ fun SpecialWhiteText(modifier: Modifier = Modifier, state: GameState) {
 }
 
 @Composable
-fun NormalText(modifier: Modifier = Modifier, state: GameState) {
+fun NormalText(
+    modifier: Modifier = Modifier,
+    textModifier: Modifier = Modifier,
+    centerText: Boolean = false,
+    lineHeight: TextUnit? = null,
+    state: GameState
+) {
     Box(
         modifier = modifier
             .background(AppColors.Color_808080)
@@ -49,9 +56,10 @@ fun NormalText(modifier: Modifier = Modifier, state: GameState) {
             text = state.currentText.replace("\\n", "\n"),
             fontSize = 20.sp,
             color = Color.White,
+            lineHeight = lineHeight,
             modifier = Modifier
-                .padding(start = 8.dp, end = 8.dp)
-                .align(Alignment.Center)
+                .align(if (centerText) Alignment.Center else Alignment.TopStart)
+                .then(textModifier)
         )
     }
 }
@@ -92,7 +100,7 @@ fun SpeechLayout(state: GameState) {
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            NormalText(state = state)
+            NormalText(state = state, centerText = true)
         }
 
         DescText(

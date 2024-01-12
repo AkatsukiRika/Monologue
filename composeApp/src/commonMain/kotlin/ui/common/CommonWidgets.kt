@@ -31,7 +31,8 @@ fun PixelText(
     fontSize: TextUnit = 16.sp,
     color: Color = Color.Black,
     modifier: Modifier = Modifier,
-    textAlign: TextAlign? = null
+    textAlign: TextAlign? = null,
+    lineHeight: TextUnit? = null
 ) {
     Text(
         text = text,
@@ -39,7 +40,8 @@ fun PixelText(
         fontSize = fontSize,
         color = color,
         modifier = modifier,
-        textAlign = textAlign
+        textAlign = textAlign,
+        lineHeight = lineHeight ?: fontSize
     )
 }
 
