@@ -12,4 +12,12 @@ interface BaseStrings {
     val settings: String
 
     val exitGame: String
+
+    val save: String
+
+    val load: String
+
+    val backToMenu: String
+
+    val endGame: String
 }

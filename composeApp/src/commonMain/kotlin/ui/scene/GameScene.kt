@@ -9,19 +9,26 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import getScenarioXML
 import moe.tlaster.precompose.flow.collectAsStateWithLifecycle
 import moe.tlaster.precompose.navigation.Navigator
 import moe.tlaster.precompose.viewmodel.viewModel
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
+import ui.common.NormalText
+import ui.common.SpecialWhiteText
+import ui.common.SpeechLayout
+import ui.screen.GameSettingsScreen
 import ui.vm.GameEvent
 import ui.vm.GameViewModel
+import kotlin.system.exitProcess
 
 @Composable
 fun GameScene(navigator: Navigator) {
@@ -38,16 +45,54 @@ fun GameScene(navigator: Navigator) {
                 viewModel.dispatch(GameEvent.ClickNext)
             }
     ) {
+        when {
+            state.showSpecialWhiteText -> {
+                SpecialWhiteText(
+                    modifier = Modifier.align(Alignment.Center),
+                    state = state
+                )
+            }
+
+            state.showSpeechText -> {
+                SpeechLayout(state = state)
+            }
+
+            state.showNormalText -> {
+                NormalText(
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .padding(start = 16.dp, end = 16.dp, bottom = 16.dp),
+                    state = state
+                )
+            }
+        }
+
+        if (state.showSettingsScreen) {
+            GameSettingsScreen(
+                onBackToMenu = {
+                    navigator.goBack()
+                },
+                onEnd = {
+                    exitProcess(status = 0)
+                }
+            )
+        }
+
         SettingsIcon(
             modifier = Modifier
                 .align(Alignment.TopStart)
                 .padding(top = 16.dp, start = 16.dp)
                 .size(32.dp)
                 .clickable {
-                    val showSettings = state.showSettingsSubScreen
+                    val showSettings = state.showSettingsScreen
                     viewModel.dispatch(GameEvent.ShowSettings(show = !showSettings))
                 }
         )
+    }
+
+    LaunchedEffect(Unit) {
+        val xmlText = getScenarioXML("game_scenario_jp.xml")
+        viewModel.dispatch(GameEvent.LoadScenario(xmlText))
     }
 }
 

@@ -21,19 +21,6 @@ class GameViewModel : BaseViewModel<GameState, GameEvent, GameEffect>() {
 
     override fun dispatch(event: GameEvent) {
         when (event) {
-            is GameEvent.StartGame -> {
-                emitState {
-                    copy(showStartScreen = false, showGameScreen = true)
-                }
-                startGame()
-            }
-
-            is GameEvent.BackToMenu -> {
-                emitState {
-                    copy(showStartScreen = true, showGameScreen = false, showSettingsSubScreen = false)
-                }
-            }
-
             is GameEvent.LoadScenario -> {
                 startParse(event.data)
             }
@@ -44,7 +31,7 @@ class GameViewModel : BaseViewModel<GameState, GameEvent, GameEffect>() {
 
             is GameEvent.ShowSettings -> {
                 emitState {
-                    copy(showSettingsSubScreen = event.show)
+                    copy(showSettingsScreen = event.show)
                 }
             }
         }
@@ -53,21 +40,20 @@ class GameViewModel : BaseViewModel<GameState, GameEvent, GameEffect>() {
     private fun startParse(data: String) {
         viewModelScope.launch(Dispatchers.IO) {
             scenario = parseScenarioXML(data)
+            startGame()
         }
     }
 
-    private fun startGame() {
-        viewModelScope.launch(Dispatchers.IO) {
-            delay(300)
+    private suspend fun startGame() {
+        delay(300)
 
-            scenario?.scenes?.takeIf { it.isNotEmpty() }?.let { scenes ->
-                currentScene = scenes[0]
-                handleCurrentScene()
+        scenario?.scenes?.takeIf { it.isNotEmpty() }?.let { scenes ->
+            currentScene = scenes[0]
+            handleCurrentScene()
 
-                currentScene?.elements?.takeIf { it.isNotEmpty() }?.let { element ->
-                    currentSceneElement = element.first()
-                    handleCurrentSceneElement()
-                }
+            currentScene?.elements?.takeIf { it.isNotEmpty() }?.let { element ->
+                currentSceneElement = element.first()
+                handleCurrentSceneElement()
             }
         }
     }
@@ -182,13 +168,10 @@ class GameViewModel : BaseViewModel<GameState, GameEvent, GameEffect>() {
 }
 
 data class GameState(
-    val showStartScreen: Boolean = true,
-    val showGameScreen: Boolean = false,
-    val showGameBlackScreen: Boolean = false,
     val showSpecialWhiteText: Boolean = false,
     val showSpeechText: Boolean = false,
     val showNormalText: Boolean = false,
-    val showSettingsSubScreen: Boolean = false,
+    val showSettingsScreen: Boolean = false,
     val currentBack: String = "",
     val currentFront: String = "",
     val currentText: String = "",
@@ -197,9 +180,7 @@ data class GameState(
 ) : BaseState
 
 sealed class GameEvent : BaseEvent {
-    data object StartGame : GameEvent()
     data object ClickNext : GameEvent()
-    data object BackToMenu : GameEvent()
     data class LoadScenario(val data: String) : GameEvent()
     data class ShowSettings(val show: Boolean) : GameEvent()
 }
