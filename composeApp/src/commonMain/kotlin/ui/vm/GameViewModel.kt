@@ -102,12 +102,20 @@ class GameViewModel : BaseViewModel<GameState, GameEvent, GameEffect>() {
                         handleSpecialWhiteText(text = element.content)
                     }
 
+                    GameTypes.Text.SpecialRed -> {
+                        handleSpecialRedText(text = element.content)
+                    }
+
                     GameTypes.Text.Speech -> {
                         handleSpeechText(
                             text = element.content,
                             characterName = element.character ?: "",
                             timeText = element.time ?: ""
                         )
+                    }
+
+                    GameTypes.Text.Scary -> {
+                        handleScaryText(text = element.content)
                     }
 
                     GameTypes.Text.Normal -> {
@@ -126,6 +134,21 @@ class GameViewModel : BaseViewModel<GameState, GameEvent, GameEffect>() {
                 showSpecialWhiteText = true,
                 showSpeechText = false,
                 showNormalText = false,
+                showScaryText = false,
+                showSpecialRedText = false,
+                currentText = text
+            )
+        }
+    }
+
+    private fun handleSpecialRedText(text: String) {
+        emitState {
+            copy(
+                showSpecialWhiteText = false,
+                showSpeechText = false,
+                showNormalText = false,
+                showScaryText = false,
+                showSpecialRedText = true,
                 currentText = text
             )
         }
@@ -137,9 +160,24 @@ class GameViewModel : BaseViewModel<GameState, GameEvent, GameEffect>() {
                 showSpecialWhiteText = false,
                 showSpeechText = true,
                 showNormalText = false,
+                showScaryText = false,
+                showSpecialRedText = false,
                 currentText = text,
                 characterName = characterName,
                 timeText = timeText
+            )
+        }
+    }
+
+    private fun handleScaryText(text: String) {
+        emitState {
+            copy(
+                showSpecialWhiteText = false,
+                showSpeechText = false,
+                showNormalText = false,
+                showScaryText = true,
+                showSpecialRedText = false,
+                currentText = text
             )
         }
     }
@@ -150,6 +188,8 @@ class GameViewModel : BaseViewModel<GameState, GameEvent, GameEffect>() {
                 showSpecialWhiteText = false,
                 showSpeechText = false,
                 showNormalText = true,
+                showScaryText = false,
+                showSpecialRedText = false,
                 currentText = text
             )
         }
@@ -171,6 +211,8 @@ data class GameState(
     val showSpecialWhiteText: Boolean = false,
     val showSpeechText: Boolean = false,
     val showNormalText: Boolean = false,
+    val showScaryText: Boolean = false,
+    val showSpecialRedText: Boolean = false,
     val showSettingsScreen: Boolean = false,
     val currentBack: String = "",
     val currentFront: String = "",

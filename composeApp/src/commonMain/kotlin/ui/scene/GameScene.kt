@@ -29,6 +29,8 @@ import moe.tlaster.precompose.viewmodel.viewModel
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 import ui.common.NormalText
+import ui.common.ScaryText
+import ui.common.SpecialRedText
 import ui.common.SpecialWhiteText
 import ui.common.SpeechLayout
 import ui.screen.GameEffectScreen
@@ -89,8 +91,30 @@ fun GameScene(navigator: Navigator) {
                 )
             }
 
+            state.showSpecialRedText -> {
+                SpecialRedText(
+                    modifier = Modifier
+                        .align(Alignment.TopCenter)
+                        .padding(top = 42.dp),
+                    state = state
+                )
+            }
+
             state.showSpeechText -> {
                 SpeechLayout(state = state)
+            }
+
+            state.showScaryText -> {
+                ScaryText(
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .padding(start = 16.dp, end = 16.dp, bottom = 16.dp),
+                    textModifier = Modifier.padding(all = 12.dp),
+                    lineHeight = 24.sp,
+                    state = state,
+                    onUpdateTextAnimStatus = { isPlayingTextAnim = it },
+                    skipTextAnim = { skipTextAnim }
+                )
             }
 
             state.showNormalText -> {

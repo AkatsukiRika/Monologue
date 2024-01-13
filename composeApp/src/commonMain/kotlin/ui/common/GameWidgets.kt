@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -34,6 +35,18 @@ fun SpecialWhiteText(modifier: Modifier = Modifier, state: GameState) {
         text = state.currentText.replace("\\n", "\n"),
         fontSize = 32.sp,
         color = Color.White,
+        modifier = modifier.fillMaxWidth(),
+        textAlign = TextAlign.Center
+    )
+}
+
+@Composable
+fun SpecialRedText(modifier: Modifier = Modifier, state: GameState) {
+    Text(
+        text = state.currentText.replace("\\n", "\n"),
+        fontFamily = AppFonts.MSGothic(),
+        fontSize = 32.sp,
+        color = Color.Red,
         modifier = modifier.fillMaxWidth(),
         textAlign = TextAlign.Center
     )
@@ -73,6 +86,54 @@ fun NormalText(
             lineHeight = lineHeight,
             modifier = Modifier
                 .align(if (centerText) Alignment.Center else Alignment.TopStart)
+                .then(textModifier)
+        )
+    }
+
+    LaunchedEffect(state.currentText, skipAnim) {
+        if (skipAnim > 0 && skipAnim > lastSkipAnim) {
+            currentText = state.currentText.replace("\\n", "\n")
+            onUpdateTextAnimStatus?.invoke(false)
+            lastSkipAnim = skipAnim
+        } else {
+            onUpdateTextAnimStatus?.invoke(true)
+            currentText = ""
+            val fullText = state.currentText.replace("\\n", "\n")
+            fullText.forEach {
+                currentText += it
+                delay(Global.textSpeedMillis)
+            }
+            onUpdateTextAnimStatus?.invoke(false)
+        }
+    }
+}
+
+@Composable
+fun ScaryText(
+    modifier: Modifier,
+    textModifier: Modifier = Modifier,
+    lineHeight: TextUnit? = null,
+    state: GameState,
+    onUpdateTextAnimStatus: ((isPlaying: Boolean) -> Unit)? = null,
+    skipTextAnim: (() -> Int)? = null
+) {
+    var currentText by remember { mutableStateOf("") }
+    var lastSkipAnim by remember { mutableIntStateOf(0) }
+    val skipAnim = skipTextAnim?.invoke() ?: 0
+
+    Box(
+        modifier = modifier
+            .background(Color.Black)
+            .fillMaxWidth()
+            .height(128.dp)
+    ) {
+        PixelText(
+            text = currentText,
+            fontSize = 20.sp,
+            color = Color.Red,
+            lineHeight = lineHeight,
+            modifier = Modifier
+                .align(Alignment.TopStart)
                 .then(textModifier)
         )
     }

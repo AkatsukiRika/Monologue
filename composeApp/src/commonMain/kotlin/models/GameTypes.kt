@@ -10,6 +10,8 @@ object GameTypes {
         const val Normal = "normal"
         const val Speech = "speech"
         const val SpecialWhite = "special-white"
+        const val SpecialRed = "special-red"
+        const val Scary = "scary"
     }
 
     object Back {
@@ -35,6 +37,7 @@ object GameTypes {
         private const val Happy = "girl-happy"
         private const val Shy = "girl-shy"
         private const val Mature = "girl-mature"
+        private const val Scared = "girl-scared"
 
         fun getImage(tag: String) = when (tag) {
             WryNeck -> "drawable/img_girl_wry_neck.png"
@@ -42,6 +45,7 @@ object GameTypes {
             Happy -> "drawable/img_girl_happy.png"
             Shy -> "drawable/img_girl_shy.png"
             Mature -> "drawable/img_girl_mature.png"
+            Scared -> "drawable/img_girl_scared.png"
             else -> null
         }
     }
