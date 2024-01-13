@@ -100,7 +100,12 @@ fun StartScene(navigator: Navigator) {
         Spacer(modifier = Modifier.weight(16f))
 
         CommonButton(
-            onClick = {},
+            onClick = {
+                navigator.navigate(
+                    route = Routes.Settings,
+                    options = NavOptions(launchSingleTop = true)
+                )
+            },
             strokeWidth = 2.dp,
             modifier = Modifier
                 .size(width = 200.dp, height = 48.dp)

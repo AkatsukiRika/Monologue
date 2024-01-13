@@ -17,8 +17,27 @@ class StringsJP : BaseStrings {
         get() = "セーブ"
     override val load: String
         get() = "ロード"
-    override val backToMenu: String
-        get() = "メニューに戻る"
-    override val endGame: String
-        get() = "ゲームを終わる"
+    override val backToTitle: String
+        get() = "タイトルに戻る"
+
+    override val textSpeed: String
+        get() = "文字表示速度"
+    override val speedSlow: String
+        get() = "遅い"
+    override val speedNormal: String
+        get() = "普通"
+    override val speedFast: String
+        get() = "速い"
+    override val speedFastest: String
+        get() = "最速"
+    override val screenEffect: String
+        get() = "画面エフェクト"
+    override val on: String
+        get() = "オン"
+    override val off: String
+        get() = "オフ"
+    override val audioVolume: String
+        get() = "オーディオ音量"
+    override val backToGame: String
+        get() = "ゲームに戻る"
 }

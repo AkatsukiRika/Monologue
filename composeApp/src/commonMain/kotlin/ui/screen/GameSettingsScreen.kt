@@ -88,7 +88,7 @@ private fun MainColumn(
             strokeWidth = 2.dp
         ) {
             PixelText(
-                text = Global.Strings.backToMenu,
+                text = Global.Strings.backToTitle,
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center
             )
@@ -105,7 +105,7 @@ private fun MainColumn(
             strokeWidth = 2.dp
         ) {
             PixelText(
-                text = Global.Strings.endGame,
+                text = Global.Strings.exitGame,
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center
             )

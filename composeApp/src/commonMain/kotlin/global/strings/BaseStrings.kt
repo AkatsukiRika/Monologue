@@ -17,7 +17,25 @@ interface BaseStrings {
 
     val load: String
 
-    val backToMenu: String
+    val backToTitle: String
 
-    val endGame: String
+    val textSpeed: String
+
+    val speedSlow: String
+
+    val speedNormal: String
+
+    val speedFast: String
+
+    val speedFastest: String
+
+    val screenEffect: String
+
+    val on: String
+
+    val off: String
+
+    val audioVolume: String
+
+    val backToGame: String
 }

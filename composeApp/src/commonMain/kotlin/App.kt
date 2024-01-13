@@ -4,6 +4,7 @@ import moe.tlaster.precompose.PreComposeApp
 import moe.tlaster.precompose.navigation.NavHost
 import moe.tlaster.precompose.navigation.rememberNavigator
 import ui.scene.GameScene
+import ui.scene.SettingsScene
 import ui.scene.StartScene
 
 @Composable
@@ -20,6 +21,10 @@ fun App() {
 
             scene(route = Routes.Game) {
                 GameScene(navigator = navigator)
+            }
+
+            scene(route = Routes.Settings) {
+                SettingsScene(navigator = navigator)
             }
         }
     }
