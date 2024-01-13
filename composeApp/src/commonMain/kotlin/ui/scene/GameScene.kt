@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -46,13 +47,19 @@ fun GameScene(navigator: Navigator) {
     }
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     var effectType by remember { mutableStateOf("") }
+    var isPlayingTextAnim by remember { mutableStateOf(false) }
+    var skipTextAnim by remember { mutableIntStateOf(0) }
 
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.Black)
             .clickable(interactionSource = remember { MutableInteractionSource() }, indication = null) {
-                viewModel.dispatch(GameEvent.ClickNext)
+                if (!isPlayingTextAnim) {
+                    viewModel.dispatch(GameEvent.ClickNext)
+                } else {
+                    skipTextAnim++
+                }
             }
     ) {
         val backImage = GameTypes.Back.getImage(state.currentBack)
@@ -93,7 +100,9 @@ fun GameScene(navigator: Navigator) {
                         .padding(start = 16.dp, end = 16.dp, bottom = 16.dp),
                     textModifier = Modifier.padding(all = 12.dp),
                     lineHeight = 24.sp,
-                    state = state
+                    state = state,
+                    onUpdateTextAnimStatus = { isPlayingTextAnim = it },
+                    skipTextAnim = { skipTextAnim }
                 )
             }
         }

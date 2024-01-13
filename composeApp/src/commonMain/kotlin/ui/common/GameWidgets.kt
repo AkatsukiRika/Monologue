@@ -10,6 +10,12 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -17,6 +23,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import global.Global
+import kotlinx.coroutines.delay
 import ui.vm.GameState
 import utils.sideBorders
 
@@ -37,8 +45,14 @@ fun NormalText(
     textModifier: Modifier = Modifier,
     centerText: Boolean = false,
     lineHeight: TextUnit? = null,
-    state: GameState
+    state: GameState,
+    onUpdateTextAnimStatus: ((isPlaying: Boolean) -> Unit)? = null,
+    skipTextAnim: (() -> Int)? = null
 ) {
+    var currentText by remember { mutableStateOf("") }
+    var lastSkipAnim by remember { mutableIntStateOf(0) }
+    val skipAnim = skipTextAnim?.invoke() ?: 0
+
     Box(
         modifier = modifier
             .background(AppColors.Color_808080)
@@ -53,7 +67,7 @@ fun NormalText(
             .height(128.dp)
     ) {
         PixelText(
-            text = state.currentText.replace("\\n", "\n"),
+            text = currentText,
             fontSize = 20.sp,
             color = Color.White,
             lineHeight = lineHeight,
@@ -61,6 +75,23 @@ fun NormalText(
                 .align(if (centerText) Alignment.Center else Alignment.TopStart)
                 .then(textModifier)
         )
+    }
+
+    LaunchedEffect(state.currentText, skipAnim) {
+        if (skipAnim > 0 && skipAnim > lastSkipAnim) {
+            currentText = state.currentText.replace("\\n", "\n")
+            onUpdateTextAnimStatus?.invoke(false)
+            lastSkipAnim = skipAnim
+        } else {
+            onUpdateTextAnimStatus?.invoke(true)
+            currentText = ""
+            val fullText = state.currentText.replace("\\n", "\n")
+            fullText.forEach {
+                currentText += it
+                delay(Global.textSpeedMillis)
+            }
+            onUpdateTextAnimStatus?.invoke(false)
+        }
     }
 }
 
