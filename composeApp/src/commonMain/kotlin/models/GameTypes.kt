@@ -20,6 +20,7 @@ object GameTypes {
         private const val Building = "building"
         private const val Street = "street"
         private const val Door = "door"
+        private const val RoomScary = "room-scary"
 
         fun getImage(tag: String) = when (tag) {
             Room -> "drawable/img_room.png"
@@ -27,6 +28,7 @@ object GameTypes {
             Building -> "drawable/img_building.png"
             Street -> "drawable/img_street.png"
             Door -> "drawable/img_door.png"
+            RoomScary -> "drawable/img_room_scary.jpg"
             else -> null
         }
     }
