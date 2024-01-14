@@ -89,7 +89,11 @@ class GameViewModel : BaseViewModel<GameState, GameEvent, GameEffect>() {
     private fun handleCurrentScene() {
         currentScene?.let {
             emitState {
-                copy(currentBack = it.back, currentFront = it.front ?: "")
+                copy(
+                    currentBack = it.back,
+                    currentFront = it.front ?: "",
+                    currentFrontAlpha = it.frontAlpha
+                )
             }
         }
     }
@@ -205,6 +209,7 @@ data class GameState(
     val showSettingsScreen: Boolean = false,
     val currentBack: String = "",
     val currentFront: String = "",
+    val currentFrontAlpha: Float = 1f,
     val currentText: String = "",
     val characterName: String = "",
     val timeText: String = ""

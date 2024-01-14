@@ -179,7 +179,7 @@
         <effect type="turn-white" />
     </scene>
 
-    <scene id="20" back="smoke" front="girl-wry-neck-opacity">
+    <scene id="20" back="smoke" front="girl-wry-neck" frontAlpha="0.5">
         <text type="normal">それは願望が生んだ夢だったかもしれない。</text>
         <text type="normal">ある夜、携帯が初めて鳴った。</text>
         <text type="normal">幸せそうな声だった。</text>

@@ -44,6 +44,7 @@ actual fun parseScenarioXML(data: String): GameModels.Scenario {
             val id = scene.getAttribute("id")
             val back = scene.getAttribute("back")
             val front = scene.getAttribute("front")
+            val frontAlpha = scene.getAttribute("frontAlpha").toFloatOrNull() ?: 1f
             val childNodes = scene.childNodes
             val sceneElements = mutableListOf<GameModels.SceneElement>()
 
@@ -82,6 +83,7 @@ actual fun parseScenarioXML(data: String): GameModels.Scenario {
                 id = id.toIntOrNull() ?: 0,
                 back = back,
                 front = front,
+                frontAlpha = frontAlpha,
                 elements = sceneElements
             )
             sceneObjects.add(sceneObject)

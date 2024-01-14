@@ -79,7 +79,8 @@ fun GameScene(navigator: Navigator) {
             Image(
                 painter = painterResource(frontImage),
                 contentDescription = null,
-                modifier = Modifier.align(Alignment.BottomCenter)
+                modifier = Modifier.align(Alignment.BottomCenter),
+                alpha = state.currentFrontAlpha
             )
         }
 
