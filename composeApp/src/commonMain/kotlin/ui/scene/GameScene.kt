@@ -170,16 +170,8 @@ fun GameScene(navigator: Navigator) {
 
     LaunchedEffect(Unit) {
         viewModel.uiEffect.observeEffect {
-            effectType = when (it) {
-                is GameEffect.RedTurnEffect -> {
-                    GameTypes.Effect.RedTurn
-                }
-                is GameEffect.ClimaxBlinkEffect -> {
-                    GameTypes.Effect.ClimaxBlink
-                }
-                is GameEffect.InvertColorEffect -> {
-                    GameTypes.Effect.InvertColor
-                }
+            if (it is GameEffect.ShowEffect) {
+                effectType = it.effect
             }
         }
     }

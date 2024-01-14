@@ -5,6 +5,7 @@ object GameTypes {
         const val RedTurn = "red-turn"
         const val ClimaxBlink = "climax-blink"
         const val InvertColor = "invert-color"
+        const val TurnWhite = "turn-white"
     }
 
     object Text {

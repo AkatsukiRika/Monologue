@@ -123,7 +123,7 @@ class GameViewModel : BaseViewModel<GameState, GameEvent, GameEffect>() {
                     }
                 }
             } else if (element is GameModels.Effect) {
-                handleEffect(type = element.type)
+                emitEffect(GameEffect.ShowEffect(effect = element.type))
             }
         }
     }
@@ -194,20 +194,6 @@ class GameViewModel : BaseViewModel<GameState, GameEvent, GameEffect>() {
             )
         }
     }
-
-    private fun handleEffect(type: String) {
-        when (type) {
-            GameTypes.Effect.RedTurn -> {
-                emitEffect(GameEffect.RedTurnEffect)
-            }
-            GameTypes.Effect.ClimaxBlink -> {
-                emitEffect(GameEffect.ClimaxBlinkEffect)
-            }
-            GameTypes.Effect.InvertColor -> {
-                emitEffect(GameEffect.InvertColorEffect)
-            }
-        }
-    }
 }
 
 data class GameState(
@@ -231,7 +217,5 @@ sealed class GameEvent : BaseEvent {
 }
 
 sealed class GameEffect : BaseEffect {
-    data object RedTurnEffect : GameEffect()
-    data object ClimaxBlinkEffect : GameEffect()
-    data object InvertColorEffect : GameEffect()
+    data class ShowEffect(val effect: String) : GameEffect()
 }

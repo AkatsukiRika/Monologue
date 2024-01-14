@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.layout.ContentScale
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import models.GameTypes
@@ -44,6 +45,20 @@ fun GameEffectScreen(state: GameState, type: String, onAfterEffect: () -> Unit) 
         scope.launch {
             bgColor = Color.Red
             delay(200)
+            bgColor = Color.Transparent
+            onAfterEffect()
+        }
+    }
+    val onTurnWhite = {
+        scope.launch {
+            bgColor = Color.White.copy(alpha = 0f)
+            animate(
+                initialValue = 0f,
+                targetValue = 1f,
+                animationSpec = tween(durationMillis = 500, easing = LinearEasing)
+            ) { value, _ ->
+                bgColor = Color.White.copy(alpha = value)
+            }
             bgColor = Color.Transparent
             onAfterEffect()
         }
@@ -101,7 +116,8 @@ fun GameEffectScreen(state: GameState, type: String, onAfterEffect: () -> Unit) 
                     .fillMaxSize()
                     .graphicsLayer {
                         alpha = invertAlpha
-                    }
+                    },
+                contentScale = ContentScale.Crop
             )
         }
     }
@@ -116,6 +132,9 @@ fun GameEffectScreen(state: GameState, type: String, onAfterEffect: () -> Unit) 
             }
             GameTypes.Effect.InvertColor -> {
                 onInvertColor()
+            }
+            GameTypes.Effect.TurnWhite -> {
+                onTurnWhite()
             }
         }
     }
