@@ -4,6 +4,7 @@ object GameTypes {
     object Effect {
         const val RedTurn = "red-turn"
         const val ClimaxBlink = "climax-blink"
+        const val InvertColor = "invert-color"
     }
 
     object Text {
@@ -21,6 +22,8 @@ object GameTypes {
         private const val Street = "street"
         private const val Door = "door"
         private const val RoomScary = "room-scary"
+        private const val Scary = "scary"
+        private const val Hospital = "hospital"
 
         fun getImage(tag: String) = when (tag) {
             Room -> "drawable/img_room.png"
@@ -29,6 +32,8 @@ object GameTypes {
             Street -> "drawable/img_street.png"
             Door -> "drawable/img_door.png"
             RoomScary -> "drawable/img_room_scary.jpg"
+            Scary -> "drawable/img_scary.png"
+            Hospital -> "drawable/img_hospital.png"
             else -> null
         }
     }
@@ -47,7 +52,7 @@ object GameTypes {
             Happy -> "drawable/img_girl_happy.png"
             Shy -> "drawable/img_girl_shy.png"
             Mature -> "drawable/img_girl_mature.png"
-            Scared -> "drawable/img_girl_scared.png"
+            Scared -> "drawable/img_girl_scared.jpg"
             else -> null
         }
     }

@@ -203,6 +203,9 @@ class GameViewModel : BaseViewModel<GameState, GameEvent, GameEffect>() {
             GameTypes.Effect.ClimaxBlink -> {
                 emitEffect(GameEffect.ClimaxBlinkEffect)
             }
+            GameTypes.Effect.InvertColor -> {
+                emitEffect(GameEffect.InvertColorEffect)
+            }
         }
     }
 }
@@ -230,4 +233,5 @@ sealed class GameEvent : BaseEvent {
 sealed class GameEffect : BaseEffect {
     data object RedTurnEffect : GameEffect()
     data object ClimaxBlinkEffect : GameEffect()
+    data object InvertColorEffect : GameEffect()
 }

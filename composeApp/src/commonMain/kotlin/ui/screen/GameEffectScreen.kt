@@ -3,25 +3,42 @@ package ui.screen
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animate
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.ColorMatrix
+import androidx.compose.ui.graphics.graphicsLayer
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import models.GameTypes
+import org.jetbrains.compose.resources.ExperimentalResourceApi
+import org.jetbrains.compose.resources.painterResource
+import ui.vm.GameState
 
+private val invertColorMatrix = floatArrayOf(
+    -1f, 0f, 0f, 0f, 255f,
+    0f, -1f, 0f, 0f, 255f,
+    0f, 0f, -1f, 0f, 255f,
+    0f, 0f, 0f, 1f, 0f
+)
+
+@OptIn(ExperimentalResourceApi::class)
 @Composable
-fun GameEffectScreen(type: String, onAfterEffect: () -> Unit) {
+fun GameEffectScreen(state: GameState, type: String, onAfterEffect: () -> Unit) {
     var bgColor by remember { mutableStateOf(Color.Transparent) }
+    var invertAlpha by remember { mutableFloatStateOf(0f) }
     val scope = rememberCoroutineScope()
     val onRedTurn = {
         scope.launch {
@@ -55,12 +72,39 @@ fun GameEffectScreen(type: String, onAfterEffect: () -> Unit) {
             onAfterEffect()
         }
     }
+    val onInvertColor = {
+        scope.launch {
+            animate(
+                initialValue = 0f,
+                targetValue = 1f,
+                animationSpec = tween(durationMillis = 1000, easing = LinearEasing)
+            ) { value, _ ->
+                invertAlpha = value
+            }
+            invertAlpha = 0f
+            onAfterEffect()
+        }
+    }
 
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(bgColor)
-    )
+    ) {
+        val backImage = GameTypes.Back.getImage(state.currentBack)
+        if (invertAlpha > 0f && backImage != null) {
+            Image(
+                painter = painterResource(backImage),
+                contentDescription = null,
+                colorFilter = ColorFilter.colorMatrix(ColorMatrix(invertColorMatrix)),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .graphicsLayer {
+                        alpha = invertAlpha
+                    }
+            )
+        }
+    }
 
     LaunchedEffect(type) {
         when (type) {
@@ -69,6 +113,9 @@ fun GameEffectScreen(type: String, onAfterEffect: () -> Unit) {
             }
             GameTypes.Effect.ClimaxBlink -> {
                 onClimaxBlink()
+            }
+            GameTypes.Effect.InvertColor -> {
+                onInvertColor()
             }
         }
     }

@@ -154,6 +154,7 @@ fun GameScene(navigator: Navigator) {
         )
 
         GameEffectScreen(
+            state = state,
             type = effectType,
             onAfterEffect = {
                 effectType = ""
@@ -175,6 +176,9 @@ fun GameScene(navigator: Navigator) {
                 }
                 is GameEffect.ClimaxBlinkEffect -> {
                     GameTypes.Effect.ClimaxBlink
+                }
+                is GameEffect.InvertColorEffect -> {
+                    GameTypes.Effect.InvertColor
                 }
             }
         }
