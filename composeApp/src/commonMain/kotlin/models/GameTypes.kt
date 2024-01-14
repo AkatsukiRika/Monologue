@@ -25,6 +25,8 @@ object GameTypes {
         private const val RoomScary = "room-scary"
         private const val Scary = "scary"
         private const val Hospital = "hospital"
+        private const val Smoke = "smoke"
+        private const val Trash = "trash"
 
         fun getImage(tag: String) = when (tag) {
             Room -> "drawable/img_room.png"
@@ -35,6 +37,8 @@ object GameTypes {
             RoomScary -> "drawable/img_room_scary.jpg"
             Scary -> "drawable/img_scary.png"
             Hospital -> "drawable/img_hospital.png"
+            Smoke -> "drawable/img_smoke.png"
+            Trash -> "drawable/img_trash.png"
             else -> null
         }
     }
