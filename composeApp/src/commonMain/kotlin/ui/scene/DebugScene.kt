@@ -22,7 +22,7 @@ fun DebugScene(navigator: Navigator) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Button(onClick = {
-            playAudioFile(fileName = "test.mp3")
+            playAudioFile(fileName = "main_bgm.mp3")
         }) {
             Text("Play Audio")
         }

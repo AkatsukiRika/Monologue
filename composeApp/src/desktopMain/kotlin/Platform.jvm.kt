@@ -117,7 +117,12 @@ actual fun playAudioFile(fileName: String) {
     Platform.runLater {
         val url = DesktopUtils.getResourceURL(fileName) ?: return@runLater
         val tempFile = DesktopUtils.createTempFileFromResource(url, extension = ".mp3")
-        val audioSource = "file://${tempFile.absolutePath}"
+        val osName = System.getProperty("os.name")
+        val audioSource = if (osName.lowercase().contains("windows")) {
+            "file:///${tempFile.absolutePath.replace("\\", "/")}"
+        } else {
+            "file://${tempFile.absolutePath}"
+        }
         val media = Media(audioSource)
         mediaPlayer = MediaPlayer(media)
         mediaPlayer?.play()

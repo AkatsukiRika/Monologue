@@ -7,13 +7,22 @@ import models.GameModels
 import models.GameTypes
 import moe.tlaster.precompose.viewmodel.viewModelScope
 import parseScenarioXML
+import playAudioFile
 
 class GameViewModel : BaseViewModel<GameState, GameEvent, GameEffect>() {
+    companion object {
+        const val AUDIO_BGM_MAIN = "main_bgm.mp3"
+    }
+
     private var scenario: GameModels.Scenario? = null
 
     private var currentScene: GameModels.Scene? = null
 
     private var currentSceneElement: GameModels.SceneElement? = null
+
+    init {
+        playAudioFile(fileName = AUDIO_BGM_MAIN)
+    }
 
     override fun getInitState(): GameState {
         return GameState()
