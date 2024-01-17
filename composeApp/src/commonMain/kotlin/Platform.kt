@@ -22,6 +22,8 @@ expect fun parseScenarioXML(data: String): GameModels.Scenario
 
 expect fun playAudioFile(fileName: String)
 
+expect fun stopAudio()
+
 /**
  * KMP DataStore使用参考文档：https://funkymuse.dev/posts/create-data-store-kmp/
  */

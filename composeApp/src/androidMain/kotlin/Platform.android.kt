@@ -110,6 +110,9 @@ actual fun parseScenarioXML(data: String): GameModels.Scenario {
     return GameModels.Scenario(language = "none")
 }
 
+private var mediaPlayer: MediaPlayer? = null
+
+@SuppressLint("DiscouragedApi")
 actual fun playAudioFile(fileName: String) {
     // 去除后缀名
     val context = GlobalData.context ?: return
@@ -120,8 +123,12 @@ actual fun playAudioFile(fileName: String) {
     val path = split[0]
 
     val resourceId = context.resources.getIdentifier(path, "raw", context.packageName)
-    val mediaPlayer = MediaPlayer.create(context, resourceId)
-    mediaPlayer.start()
+    mediaPlayer = MediaPlayer.create(context, resourceId)
+    mediaPlayer?.start()
+}
+
+actual fun stopAudio() {
+    mediaPlayer?.stop()
 }
 
 actual fun createDataStore(): DataStore<Preferences> {

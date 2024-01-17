@@ -129,6 +129,10 @@ actual fun playAudioFile(fileName: String) {
     }
 }
 
+actual fun stopAudio() {
+    mediaPlayer?.stop()
+}
+
 actual fun createDataStore(): DataStore<Preferences> = createDataStoreWithDefaults {
     DesktopUtils.getHomeDirectory()
 }
