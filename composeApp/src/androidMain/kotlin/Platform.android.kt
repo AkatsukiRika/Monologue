@@ -5,6 +5,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
 import models.GameModels
 import org.w3c.dom.Element
 import org.xml.sax.InputSource
@@ -120,4 +122,8 @@ actual fun playAudioFile(fileName: String) {
     val resourceId = context.resources.getIdentifier(path, "raw", context.packageName)
     val mediaPlayer = MediaPlayer.create(context, resourceId)
     mediaPlayer.start()
+}
+
+actual fun createDataStore(): DataStore<Preferences> {
+    TODO("Not yet implemented")
 }

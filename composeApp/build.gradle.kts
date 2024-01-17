@@ -36,6 +36,7 @@ kotlin {
             implementation(compose.components.resources)
             api(libs.pre.compose)
             api(libs.pre.compose.viewmodel)
+            implementation(libs.androidx.datastore.core)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)

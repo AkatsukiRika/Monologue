@@ -2,6 +2,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
 import javafx.application.Platform
 import javafx.scene.media.Media
 import javafx.scene.media.MediaPlayer
@@ -120,4 +122,8 @@ actual fun playAudioFile(fileName: String) {
         mediaPlayer = MediaPlayer(media)
         mediaPlayer?.play()
     }
+}
+
+actual fun createDataStore(): DataStore<Preferences> = createDataStoreWithDefaults {
+    DesktopUtils.getHomeDirectory()
 }

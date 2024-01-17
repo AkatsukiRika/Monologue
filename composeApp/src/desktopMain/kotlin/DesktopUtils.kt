@@ -17,4 +17,6 @@ object DesktopUtils {
         }
         return tempFile
     }
+
+    fun getHomeDirectory() = System.getProperty("user.home")
 }
