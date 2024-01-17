@@ -38,6 +38,17 @@ kotlin {
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
+
+            val osName = System.getProperty("os.name").lowercase()
+            val fxSuffix = when {
+                osName.contains("windows") -> "win"
+                osName.contains("linux") -> "linux"
+                osName.contains("mac") -> "mac"
+                else -> throw IllegalStateException("Unsupported Platform: $osName")
+            }
+            implementation("org.openjfx:javafx-base:21.0.1:$fxSuffix")
+            implementation("org.openjfx:javafx-controls:21.0.1:$fxSuffix")
+            implementation("org.openjfx:javafx-media:21.0.1:$fxSuffix")
         }
     }
 }
