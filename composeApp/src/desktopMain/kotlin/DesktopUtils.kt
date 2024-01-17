@@ -6,8 +6,8 @@ object DesktopUtils {
         return this::class.java.classLoader?.getResource("raw/$path")
     }
 
-    fun createTempFileFromResource(url: URL): File {
-        val tempFile = File.createTempFile("temp_file", ".tmp")
+    fun createTempFileFromResource(url: URL, extension: String = ".tmp"): File {
+        val tempFile = File.createTempFile("temp_file", extension)
         tempFile.deleteOnExit()
 
         url.openStream().use { input ->

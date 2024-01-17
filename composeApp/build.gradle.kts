@@ -1,3 +1,4 @@
+import org.gradle.nativeplatform.platform.internal.DefaultNativePlatform
 import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
@@ -39,16 +40,24 @@ kotlin {
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
 
-            val osName = System.getProperty("os.name").lowercase()
+            val os = DefaultNativePlatform.getCurrentOperatingSystem()
+            val arch = DefaultNativePlatform.getCurrentArchitecture()
+            println("当前操作系统: $os, 当前架构: $arch")
             val fxSuffix = when {
-                osName.contains("windows") -> "win"
-                osName.contains("linux") -> "linux"
-                osName.contains("mac") -> "mac"
-                else -> throw IllegalStateException("Unsupported Platform: $osName")
+                os.isWindows -> "win"
+                os.isMacOsX -> {
+                    if (arch.isArm64) "mac-aarch64" else "mac"
+                }
+                os.isLinux -> {
+                    if (arch.isArm64) "linux-aarch64" else "linux"
+                }
+                else -> throw IllegalStateException("不支持的操作系统或CPU架构！")
             }
+
             implementation("org.openjfx:javafx-base:21.0.1:$fxSuffix")
             implementation("org.openjfx:javafx-controls:21.0.1:$fxSuffix")
             implementation("org.openjfx:javafx-media:21.0.1:$fxSuffix")
+            implementation("org.openjfx:javafx-graphics:21.0.1:$fxSuffix")
         }
     }
 }

@@ -2,6 +2,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import javafx.application.Platform
+import javafx.scene.media.Media
+import javafx.scene.media.MediaPlayer
 import models.GameModels
 import org.w3c.dom.Element
 import org.xml.sax.InputSource
@@ -97,4 +100,24 @@ actual fun parseScenarioXML(data: String): GameModels.Scenario {
         e.printStackTrace()
     }
     return GameModels.Scenario(language = "none")
+}
+
+private var isJavaFXPlatformInit = false
+
+private var mediaPlayer: MediaPlayer? = null
+
+actual fun playAudioFile(fileName: String) {
+    if (!isJavaFXPlatformInit) {
+        Platform.startup {}
+        isJavaFXPlatformInit = true
+    }
+
+    Platform.runLater {
+        val url = DesktopUtils.getResourceURL(fileName) ?: return@runLater
+        val tempFile = DesktopUtils.createTempFileFromResource(url, extension = ".mp3")
+        val audioSource = "file://${tempFile.absolutePath}"
+        val media = Media(audioSource)
+        mediaPlayer = MediaPlayer(media)
+        mediaPlayer?.play()
+    }
 }

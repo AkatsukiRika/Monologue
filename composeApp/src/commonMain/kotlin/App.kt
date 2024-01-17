@@ -3,6 +3,7 @@ import global.Routes
 import moe.tlaster.precompose.PreComposeApp
 import moe.tlaster.precompose.navigation.NavHost
 import moe.tlaster.precompose.navigation.rememberNavigator
+import ui.scene.DebugScene
 import ui.scene.GameScene
 import ui.scene.SettingsScene
 import ui.scene.StartScene
@@ -13,7 +14,7 @@ fun App() {
         val navigator = rememberNavigator()
         NavHost(
             navigator = navigator,
-            initialRoute = Routes.Start
+            initialRoute = Routes.Debug
         ) {
             scene(route = Routes.Start) {
                 StartScene(navigator = navigator)
@@ -25,6 +26,10 @@ fun App() {
 
             scene(route = Routes.Settings) {
                 SettingsScene(navigator = navigator)
+            }
+
+            scene(route = Routes.Debug) {
+                DebugScene(navigator = navigator)
             }
         }
     }

@@ -1,4 +1,5 @@
 import android.annotation.SuppressLint
+import android.media.MediaPlayer
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.Font
@@ -105,4 +106,18 @@ actual fun parseScenarioXML(data: String): GameModels.Scenario {
         e.printStackTrace()
     }
     return GameModels.Scenario(language = "none")
+}
+
+actual fun playAudioFile(fileName: String) {
+    // 去除后缀名
+    val context = GlobalData.context ?: return
+    val split = fileName.split(".")
+    if (split.isEmpty()) {
+        return
+    }
+    val path = split[0]
+
+    val resourceId = context.resources.getIdentifier(path, "raw", context.packageName)
+    val mediaPlayer = MediaPlayer.create(context, resourceId)
+    mediaPlayer.start()
 }

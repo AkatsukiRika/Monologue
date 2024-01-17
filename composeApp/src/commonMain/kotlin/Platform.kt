@@ -10,3 +10,5 @@ expect fun getFont(name: String, res: String, weight: FontWeight, style: FontSty
 expect fun getScenarioXML(fileName: String): String
 
 expect fun parseScenarioXML(data: String): GameModels.Scenario
+
+expect fun playAudioFile(fileName: String)
