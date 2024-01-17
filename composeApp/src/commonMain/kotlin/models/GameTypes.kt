@@ -29,16 +29,16 @@ object GameTypes {
         private const val Trash = "trash"
 
         fun getImage(tag: String) = when (tag) {
-            Room -> "drawable/img_room.png"
-            Studio -> "drawable/img_studio.png"
-            Building -> "drawable/img_building.png"
-            Street -> "drawable/img_street.png"
-            Door -> "drawable/img_door.png"
-            RoomScary -> "drawable/img_room_scary.jpg"
-            Scary -> "drawable/img_scary.png"
-            Hospital -> "drawable/img_hospital.png"
-            Smoke -> "drawable/img_smoke.png"
-            Trash -> "drawable/img_trash.png"
+            Room -> "drawable/img_room.webp"
+            Studio -> "drawable/img_studio.webp"
+            Building -> "drawable/img_building.webp"
+            Street -> "drawable/img_street.webp"
+            Door -> "drawable/img_door.webp"
+            RoomScary -> "drawable/img_room_scary.webp"
+            Scary -> "drawable/img_scary.webp"
+            Hospital -> "drawable/img_hospital.webp"
+            Smoke -> "drawable/img_smoke.webp"
+            Trash -> "drawable/img_trash.webp"
             else -> null
         }
     }
@@ -52,12 +52,12 @@ object GameTypes {
         private const val Scared = "girl-scared"
 
         fun getImage(tag: String) = when (tag) {
-            WryNeck -> "drawable/img_girl_wry_neck.png"
-            Serious -> "drawable/img_girl_serious.png"
-            Happy -> "drawable/img_girl_happy.png"
-            Shy -> "drawable/img_girl_shy.png"
-            Mature -> "drawable/img_girl_mature.png"
-            Scared -> "drawable/img_girl_scared.jpg"
+            WryNeck -> "drawable/img_girl_wry_neck.webp"
+            Serious -> "drawable/img_girl_serious.webp"
+            Happy -> "drawable/img_girl_happy.webp"
+            Shy -> "drawable/img_girl_shy.webp"
+            Mature -> "drawable/img_girl_mature.webp"
+            Scared -> "drawable/img_girl_scared.webp"
             else -> null
         }
     }
