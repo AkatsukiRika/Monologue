@@ -41,7 +41,7 @@ fun DebugScene(navigator: Navigator) {
         }
 
         Button(onClick = {
-            createDataStore().let { dataStore ->
+            createDataStore()?.let { dataStore ->
                 Global.dataStore = dataStore
                 Global.appPreferences = AppPreferences(dataStore)
             }

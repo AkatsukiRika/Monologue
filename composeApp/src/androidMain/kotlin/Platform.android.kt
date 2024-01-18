@@ -10,6 +10,7 @@ import androidx.datastore.preferences.core.Preferences
 import models.GameModels
 import org.w3c.dom.Element
 import org.xml.sax.InputSource
+import java.io.File
 import java.io.StringReader
 import java.nio.charset.StandardCharsets
 import javax.xml.parsers.DocumentBuilderFactory
@@ -132,6 +133,9 @@ actual fun stopAudio() {
     mediaPlayer?.stop()
 }
 
-actual fun createDataStore(): DataStore<Preferences> {
-    TODO("Not yet implemented")
+actual fun createDataStore(): DataStore<Preferences>? {
+    val context = GlobalData.context ?: return null
+    return createDataStoreWithDefaults {
+        File(context.applicationContext.filesDir, "test.preferences_pb").path
+    }
 }

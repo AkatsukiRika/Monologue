@@ -137,6 +137,6 @@ actual fun stopAudio() {
     mediaPlayer?.stop()
 }
 
-actual fun createDataStore(): DataStore<Preferences> = createDataStoreWithDefaults {
+actual fun createDataStore(): DataStore<Preferences>? = createDataStoreWithDefaults {
     DesktopUtils.getHomeDirectory() + File.separator + "test.preferences_pb"
 }
