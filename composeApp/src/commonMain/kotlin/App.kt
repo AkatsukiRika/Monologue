@@ -14,7 +14,7 @@ fun App() {
         val navigator = rememberNavigator()
         NavHost(
             navigator = navigator,
-            initialRoute = Routes.Start
+            initialRoute = Routes.Debug
         ) {
             scene(route = Routes.Start) {
                 StartScene(navigator = navigator)

@@ -10,6 +10,7 @@ import javafx.scene.media.MediaPlayer
 import models.GameModels
 import org.w3c.dom.Element
 import org.xml.sax.InputSource
+import java.io.File
 import java.io.StringReader
 import javax.xml.parsers.DocumentBuilderFactory
 
@@ -134,5 +135,5 @@ actual fun stopAudio() {
 }
 
 actual fun createDataStore(): DataStore<Preferences> = createDataStoreWithDefaults {
-    DesktopUtils.getHomeDirectory()
+    DesktopUtils.getHomeDirectory() + File.separator + "test.preferences_pb"
 }
