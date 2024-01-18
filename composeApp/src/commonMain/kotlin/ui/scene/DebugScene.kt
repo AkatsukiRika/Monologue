@@ -35,7 +35,7 @@ fun DebugScene(navigator: Navigator) {
         var displayText by remember { mutableStateOf("") }
 
         Button(onClick = {
-            playAudioFile(fileName = "main_bgm.mp3")
+            playAudioFile(fileName = "main_bgm.mp3", loop = true)
         }) {
             Text("Play Audio")
         }

@@ -20,7 +20,7 @@ expect fun getScenarioXML(fileName: String): String
 
 expect fun parseScenarioXML(data: String): GameModels.Scenario
 
-expect fun playAudioFile(fileName: String)
+expect fun playAudioFile(fileName: String, loop: Boolean = false)
 
 expect fun stopAudio()
 

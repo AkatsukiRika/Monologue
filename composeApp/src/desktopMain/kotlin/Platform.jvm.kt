@@ -109,7 +109,7 @@ private var isJavaFXPlatformInit = false
 
 private var mediaPlayer: MediaPlayer? = null
 
-actual fun playAudioFile(fileName: String) {
+actual fun playAudioFile(fileName: String, loop: Boolean) {
     if (!isJavaFXPlatformInit) {
         Platform.startup {}
         isJavaFXPlatformInit = true
@@ -126,6 +126,9 @@ actual fun playAudioFile(fileName: String) {
         }
         val media = Media(audioSource)
         mediaPlayer = MediaPlayer(media)
+        if (loop) {
+            mediaPlayer?.cycleCount = MediaPlayer.INDEFINITE
+        }
         mediaPlayer?.play()
     }
 }
