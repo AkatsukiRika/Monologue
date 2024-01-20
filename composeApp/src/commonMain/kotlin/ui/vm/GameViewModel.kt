@@ -136,7 +136,13 @@ class GameViewModel : BaseViewModel<GameState, GameEvent, GameEffect>() {
                     }
                 }
             } else if (element is GameModels.Effect) {
-                emitEffect(GameEffect.ShowEffect(effect = element.type))
+                if (element.type == GameTypes.Effect.ChangeFront) {
+                    element.front?.let {
+                        handleChangeFront(newFront = it, alpha = element.frontAlpha ?: 1f)
+                    }
+                } else {
+                    emitEffect(GameEffect.ShowEffect(effect = element.type))
+                }
             }
         }
     }
@@ -204,6 +210,15 @@ class GameViewModel : BaseViewModel<GameState, GameEvent, GameEffect>() {
                 showScaryText = false,
                 showSpecialRedText = false,
                 currentText = text
+            )
+        }
+    }
+
+    private fun handleChangeFront(newFront: String, alpha: Float) {
+        emitState {
+            copy(
+                currentFront = newFront,
+                currentFrontAlpha = alpha
             )
         }
     }

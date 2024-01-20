@@ -193,7 +193,7 @@
         <text type="normal">やがて何も聞こえなくなった。300kmの彼方で。</text>
         <text type="normal">それは俺の台詞じゃなかったのか？</text>
         <text type="normal">ごめんね。ありがとう。ごめんね。ありがとう。ごめんね。ありがとう。</text>
-        <effect type="change-front" front="girl-happy-opacity" />
+        <effect type="change-front" front="girl-happy" frontAlpha="0.5" />
         <effect type="show-image" image="girl-pregnant-phone" />
     </scene>
 

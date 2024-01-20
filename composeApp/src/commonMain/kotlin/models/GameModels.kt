@@ -24,6 +24,7 @@ object GameModels {
     data class Effect(
         override val type: String,
         val front: String? = null,      // 仅当type为change-front时需要
+        val frontAlpha: Float? = null,  // 仅当type为change-front时需要
         val image: String? = null       // 仅当type为show-image时需要
     ) : SceneElement(type)
 

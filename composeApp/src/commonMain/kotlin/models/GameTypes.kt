@@ -6,6 +6,7 @@ object GameTypes {
         const val ClimaxBlink = "climax-blink"
         const val InvertColor = "invert-color"
         const val TurnWhite = "turn-white"
+        const val ChangeFront = "change-front"
     }
 
     object Text {

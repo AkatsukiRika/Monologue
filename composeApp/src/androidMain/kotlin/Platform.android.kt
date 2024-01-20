@@ -78,10 +78,12 @@ actual fun parseScenarioXML(data: String): GameModels.Scenario {
                     } else if (element.tagName == "effect") {
                         val type = element.getAttribute("type")
                         val effectFront = element.getAttribute("front")
+                        val effectFrontAlpha = element.getAttribute("frontAlpha").toFloatOrNull()
                         val image = element.getAttribute("image")
                         val effectObject = GameModels.Effect(
                             type = type,
                             front = effectFront,
+                            frontAlpha = effectFrontAlpha,
                             image = image
                         )
                         sceneElements.add(effectObject)
