@@ -19,7 +19,6 @@ class StringsJP : BaseStrings {
         get() = "ロード"
     override val backToTitle: String
         get() = "タイトルに戻る"
-
     override val textSpeed: String
         get() = "文字表示速度"
     override val speedSlow: String
@@ -40,4 +39,10 @@ class StringsJP : BaseStrings {
         get() = "オーディオ音量"
     override val backToGame: String
         get() = "ゲームに戻る"
+    override val language: String
+        get() = "言語"
+    override val languageJP: String
+        get() = "日本語"
+    override val languageCN: String
+        get() = "中文"
 }

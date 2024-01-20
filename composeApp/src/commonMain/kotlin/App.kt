@@ -1,4 +1,6 @@
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import global.Global
 import global.Routes
 import moe.tlaster.precompose.PreComposeApp
 import moe.tlaster.precompose.navigation.NavHost
@@ -14,7 +16,7 @@ fun App() {
         val navigator = rememberNavigator()
         NavHost(
             navigator = navigator,
-            initialRoute = Routes.Debug
+            initialRoute = Routes.Start
         ) {
             scene(route = Routes.Start) {
                 StartScene(navigator = navigator)
@@ -32,5 +34,9 @@ fun App() {
                 DebugScene(navigator = navigator)
             }
         }
+    }
+
+    LaunchedEffect(Unit) {
+        Global.initApp()
     }
 }

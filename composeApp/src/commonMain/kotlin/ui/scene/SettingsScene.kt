@@ -2,6 +2,7 @@ package ui.scene
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -19,52 +20,83 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import global.Global
+import global.strings.BaseStrings
+import moe.tlaster.precompose.flow.collectAsStateWithLifecycle
 import moe.tlaster.precompose.navigation.Navigator
+import moe.tlaster.precompose.viewmodel.viewModel
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 import ui.common.AppColors
 import ui.common.CommonButton
 import ui.common.PixelText
+import ui.vm.SettingsEvent
+import ui.vm.SettingsState
+import ui.vm.SettingsViewModel
 import kotlin.system.exitProcess
 
 @Composable
 fun SettingsScene(navigator: Navigator) {
+    val viewModel = viewModel(SettingsViewModel::class) {
+        SettingsViewModel()
+    }
+    val state = viewModel.uiState.collectAsStateWithLifecycle().value
+    val strings = Global.stringsFlow.collectAsStateWithLifecycle().value ?: Global.Strings
+
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(AppColors.Color_56AAAA)
     ) {
-        Spacer(modifier = Modifier.height(64.dp))
+        Spacer(modifier = Modifier.height(32.dp))
 
         Row(verticalAlignment = Alignment.CenterVertically) {
             ItemName(
-                name = Global.Strings.textSpeed,
+                name = strings.textSpeed,
                 modifier = Modifier.padding(start = 40.dp)
             )
 
             Spacer(modifier = Modifier.width(56.dp))
 
-            TextSpeedRow()
+            TextSpeedRow(strings = strings)
         }
 
-        Spacer(modifier = Modifier.height(36.dp))
+        Spacer(modifier = Modifier.height(18.dp))
 
         Row(verticalAlignment = Alignment.CenterVertically) {
             ItemName(
-                name = Global.Strings.screenEffect,
+                name = strings.screenEffect,
                 modifier = Modifier.padding(start = 40.dp)
             )
 
             Spacer(modifier = Modifier.width(56.dp))
 
-            ScreenEffectRow()
+            ScreenEffectRow(strings = strings)
         }
 
-        Spacer(modifier = Modifier.height(36.dp))
+        Spacer(modifier = Modifier.height(18.dp))
 
         Row(verticalAlignment = Alignment.CenterVertically) {
             ItemName(
-                name = Global.Strings.audioVolume,
+                name = strings.language,
+                modifier = Modifier.padding(start = 40.dp)
+            )
+
+            Spacer(modifier = Modifier.width(56.dp))
+
+            LanguageRow(
+                strings = strings,
+                state = state,
+                onChangeLanguage = {
+                    viewModel.dispatch(SettingsEvent.ChangeLanguage(it))
+                }
+            )
+        }
+
+        Spacer(modifier = Modifier.height(18.dp))
+
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            ItemName(
+                name = strings.audioVolume,
                 modifier = Modifier.padding(start = 40.dp)
             )
 
@@ -73,7 +105,7 @@ fun SettingsScene(navigator: Navigator) {
             AudioVolumeRow(currentVolume = 10)
         }
 
-        Spacer(modifier = Modifier.height(32.dp))
+        Spacer(modifier = Modifier.height(18.dp))
 
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -81,11 +113,11 @@ fun SettingsScene(navigator: Navigator) {
         ) {
             Spacer(modifier = Modifier.width(132.dp))
 
-            SaveButton()
+            SaveButton(strings = strings)
 
             Spacer(modifier = Modifier.width(160.dp))
 
-            LoadButton()
+            LoadButton(strings = strings)
         }
 
         Spacer(modifier = Modifier.height(80.dp))
@@ -103,7 +135,7 @@ fun SettingsScene(navigator: Navigator) {
                 strokeWidth = 2.dp
             ) {
                 PixelText(
-                    text = Global.Strings.backToGame,
+                    text = strings.backToGame,
                     modifier = Modifier.fillMaxWidth(),
                     textAlign = TextAlign.Center,
                     fontSize = 20.sp
@@ -123,7 +155,7 @@ fun SettingsScene(navigator: Navigator) {
                 strokeWidth = 2.dp
             ) {
                 PixelText(
-                    text = Global.Strings.backToTitle,
+                    text = strings.backToTitle,
                     modifier = Modifier.fillMaxWidth(),
                     textAlign = TextAlign.Center,
                     fontSize = 20.sp
@@ -143,7 +175,7 @@ fun SettingsScene(navigator: Navigator) {
                 strokeWidth = 2.dp
             ) {
                 PixelText(
-                    text = Global.Strings.exitGame,
+                    text = strings.exitGame,
                     modifier = Modifier.fillMaxWidth(),
                     textAlign = TextAlign.Center,
                     fontSize = 20.sp
@@ -174,13 +206,13 @@ private fun ItemName(
 }
 
 @Composable
-private fun TextSpeedRow(modifier: Modifier = Modifier) {
+private fun TextSpeedRow(modifier: Modifier = Modifier, strings: BaseStrings) {
     Row(
         modifier = modifier,
         verticalAlignment = Alignment.CenterVertically
     ) {
         PixelText(
-            text = Global.Strings.speedSlow,
+            text = strings.speedSlow,
             fontSize = 20.sp
         )
 
@@ -189,7 +221,7 @@ private fun TextSpeedRow(modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.width(12.dp))
 
         PixelText(
-            text = Global.Strings.speedNormal,
+            text = strings.speedNormal,
             fontSize = 20.sp,
             color = Color.White
         )
@@ -199,7 +231,7 @@ private fun TextSpeedRow(modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.width(12.dp))
 
         PixelText(
-            text = Global.Strings.speedFast,
+            text = strings.speedFast,
             fontSize = 20.sp
         )
 
@@ -208,20 +240,20 @@ private fun TextSpeedRow(modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.width(12.dp))
 
         PixelText(
-            text = Global.Strings.speedFastest,
+            text = strings.speedFastest,
             fontSize = 20.sp
         )
     }
 }
 
 @Composable
-private fun ScreenEffectRow(modifier: Modifier = Modifier) {
+private fun ScreenEffectRow(modifier: Modifier = Modifier, strings: BaseStrings) {
     Row(
         modifier = modifier,
         verticalAlignment = Alignment.CenterVertically
     ) {
         PixelText(
-            text = Global.Strings.on,
+            text = strings.on,
             fontSize = 20.sp,
             color = Color.White
         )
@@ -231,8 +263,43 @@ private fun ScreenEffectRow(modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.width(12.dp))
 
         PixelText(
-            text = Global.Strings.off,
+            text = strings.off,
             fontSize = 20.sp
+        )
+    }
+}
+
+@Composable
+private fun LanguageRow(
+    modifier: Modifier = Modifier,
+    strings: BaseStrings,
+    state: SettingsState,
+    onChangeLanguage: (Int) -> Unit
+) {
+    Row(
+        modifier = modifier,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        PixelText(
+            text = strings.languageJP,
+            fontSize = 20.sp,
+            color = if (state.language == Global.LANGUAGE_JP) Color.White else Color.Black,
+            modifier = Modifier.clickable {
+                onChangeLanguage(Global.LANGUAGE_JP)
+            }
+        )
+
+        Spacer(modifier = Modifier.width(12.dp))
+        DivideLine()
+        Spacer(modifier = Modifier.width(12.dp))
+
+        PixelText(
+            text = strings.languageCN,
+            fontSize = 20.sp,
+            color = if (state.language == Global.LANGUAGE_CN) Color.White else Color.Black,
+            modifier = Modifier.clickable {
+                onChangeLanguage(Global.LANGUAGE_CN)
+            }
         )
     }
 }
@@ -287,7 +354,7 @@ private fun VolumePlusIcon() {
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
-private fun SaveButton() {
+private fun SaveButton(strings: BaseStrings) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         Image(
             painter = painterResource("drawable/icon_save.png"),
@@ -297,7 +364,7 @@ private fun SaveButton() {
         Spacer(modifier = Modifier.width(20.dp))
 
         PixelText(
-            text = Global.Strings.save,
+            text = strings.save,
             fontSize = 20.sp
         )
     }
@@ -305,7 +372,7 @@ private fun SaveButton() {
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
-private fun LoadButton() {
+private fun LoadButton(strings: BaseStrings) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         Image(
             painter = painterResource("drawable/icon_load.png"),
@@ -315,7 +382,7 @@ private fun LoadButton() {
         Spacer(modifier = Modifier.width(20.dp))
 
         PixelText(
-            text = Global.Strings.load,
+            text = strings.load,
             fontSize = 20.sp
         )
     }

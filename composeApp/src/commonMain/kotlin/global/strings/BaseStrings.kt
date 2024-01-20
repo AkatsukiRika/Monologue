@@ -38,4 +38,10 @@ interface BaseStrings {
     val audioVolume: String
 
     val backToGame: String
+
+    val language: String
+
+    val languageJP: String
+
+    val languageCN: String
 }
