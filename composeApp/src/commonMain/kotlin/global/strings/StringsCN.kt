@@ -1,8 +1,8 @@
 package global.strings
 
 class StringsCN : BaseStrings {
-    override val titleJP: String
-        get() = "出口の無い子宮"
+    override val title: String
+        get() = "没有出口的子宫"
     override val titleEN: String
         get() = "Monologue by A Smug Girl"
     override val startOver: String

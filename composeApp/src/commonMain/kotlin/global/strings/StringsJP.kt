@@ -1,7 +1,7 @@
 package global.strings
 
 class StringsJP : BaseStrings {
-    override val titleJP: String
+    override val title: String
         get() = "出口の無い子宮"
     override val titleEN: String
         get() = "Monologue by A Smug Girl"

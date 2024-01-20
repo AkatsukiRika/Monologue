@@ -1,7 +1,7 @@
 package global.strings
 
 interface BaseStrings {
-    val titleJP: String
+    val title: String
 
     val titleEN: String
 

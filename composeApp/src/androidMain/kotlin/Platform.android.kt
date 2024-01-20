@@ -124,6 +124,7 @@ actual fun playAudioFile(fileName: String, loop: Boolean) {
     val path = split[0]
 
     val resourceId = context.resources.getIdentifier(path, "raw", context.packageName)
+    mediaPlayer?.stop()
     mediaPlayer = MediaPlayer.create(context, resourceId)
     mediaPlayer?.isLooping = loop
     mediaPlayer?.start()

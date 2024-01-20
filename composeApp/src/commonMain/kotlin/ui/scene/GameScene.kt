@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -175,12 +174,6 @@ fun GameScene(navigator: Navigator) {
             if (it is GameEffect.ShowEffect) {
                 effectType = it.effect
             }
-        }
-    }
-
-    DisposableEffect(Unit) {
-        onDispose {
-            viewModel.dispatch(GameEvent.StopBGM)
         }
     }
 }

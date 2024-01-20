@@ -125,6 +125,7 @@ actual fun playAudioFile(fileName: String, loop: Boolean) {
             "file://${tempFile.absolutePath}"
         }
         val media = Media(audioSource)
+        mediaPlayer?.stop()
         mediaPlayer = MediaPlayer(media)
         if (loop) {
             mediaPlayer?.cycleCount = MediaPlayer.INDEFINITE
