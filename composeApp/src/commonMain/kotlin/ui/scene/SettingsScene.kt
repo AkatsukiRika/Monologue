@@ -15,7 +15,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -34,19 +36,40 @@ import ui.vm.SettingsState
 import ui.vm.SettingsViewModel
 import kotlin.system.exitProcess
 
+@OptIn(ExperimentalResourceApi::class)
 @Composable
 fun SettingsScene(navigator: Navigator) {
+    Box(modifier = Modifier.fillMaxSize()) {
+        Image(
+            painter = painterResource("drawable/img_settings_bg.webp"),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.fillMaxSize()
+        )
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Brush.verticalGradient(colors = listOf(
+                    AppColors.Color_878A8E,
+                    AppColors.Color_878A8E.copy(alpha = 0.8f),
+                    Color.Transparent
+                )))
+        )
+
+        MainColumn(navigator)
+    }
+}
+
+@Composable
+private fun MainColumn(navigator: Navigator) {
     val viewModel = viewModel(SettingsViewModel::class) {
         SettingsViewModel()
     }
     val state = viewModel.uiState.collectAsStateWithLifecycle().value
     val strings = Global.stringsFlow.collectAsStateWithLifecycle().value ?: Global.Strings
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(AppColors.Color_56AAAA)
-    ) {
+    Column(modifier = Modifier.fillMaxSize()) {
         Spacer(modifier = Modifier.height(32.dp))
 
         Row(verticalAlignment = Alignment.CenterVertically) {
