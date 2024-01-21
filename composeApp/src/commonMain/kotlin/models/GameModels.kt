@@ -18,7 +18,8 @@ object GameModels {
         override val type: String,
         val character: String? = null,  // 角色名，仅当type为speech时需要
         val time: String? = null,       // 时间，仅当type为speech时需要
-        val content: String
+        val content: String,
+        val voice: String? = null,      // 部分文字有语音
     ) : SceneElement(type)
 
     data class Effect(

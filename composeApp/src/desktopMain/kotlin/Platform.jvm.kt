@@ -61,12 +61,14 @@ actual fun parseScenarioXML(data: String): GameModels.Scenario {
                         val type = element.getAttribute("type")
                         val character = element.getAttribute("character")
                         val time = element.getAttribute("time")
+                        val voice = element.getAttribute("voice")
                         val content = element.textContent
                         val textObject = GameModels.Text(
                             type = type,
                             character = character,
                             time = time,
-                            content = content
+                            content = content,
+                            voice = voice
                         )
                         sceneElements.add(textObject)
                     } else if (element.tagName == "effect") {
@@ -111,6 +113,8 @@ private var isJavaFXPlatformInit = false
 
 private var mediaPlayer: MediaPlayer? = null
 
+private var voicePlayer: MediaPlayer? = null
+
 actual fun playAudioFile(fileName: String, loop: Boolean) {
     if (!isJavaFXPlatformInit) {
         Platform.startup {}
@@ -138,6 +142,31 @@ actual fun playAudioFile(fileName: String, loop: Boolean) {
 
 actual fun stopAudio() {
     mediaPlayer?.stop()
+}
+
+actual fun playVoice(fileName: String) {
+    if (!isJavaFXPlatformInit) {
+        throw Exception("JavaFX Platform未初始化!")
+    }
+
+    Platform.runLater {
+        val url = DesktopUtils.getResourceURL(fileName) ?: return@runLater
+        val tempFile = DesktopUtils.createTempFileFromResource(url, extension = ".wav")
+        val osName = System.getProperty("os.name")
+        val audioSource = if (osName.lowercase().contains("windows")) {
+            "file:///${tempFile.absolutePath.replace("\\", "/")}"
+        } else {
+            "file://${tempFile.absolutePath}"
+        }
+        val media = Media(audioSource)
+        voicePlayer?.stop()
+        voicePlayer = MediaPlayer(media)
+        voicePlayer?.play()
+        mediaPlayer?.volume = 0.25
+        voicePlayer?.setOnEndOfMedia {
+            mediaPlayer?.volume = 1.0
+        }
+    }
 }
 
 actual fun createDataStore(): DataStore<Preferences>? = createDataStoreWithDefaults {

@@ -24,6 +24,8 @@ expect fun playAudioFile(fileName: String, loop: Boolean = false)
 
 expect fun stopAudio()
 
+expect fun playVoice(fileName: String)
+
 /**
  * KMP DataStore使用参考文档：https://funkymuse.dev/posts/create-data-store-kmp/
  */

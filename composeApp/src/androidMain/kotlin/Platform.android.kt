@@ -67,12 +67,14 @@ actual fun parseScenarioXML(data: String): GameModels.Scenario {
                         val type = element.getAttribute("type")
                         val character = element.getAttribute("character")
                         val time = element.getAttribute("time")
+                        val voice = element.getAttribute("voice")
                         val content = element.textContent
                         val textObject = GameModels.Text(
                             type = type,
                             character = character,
                             time = time,
-                            content = content
+                            content = content,
+                            voice = voice
                         )
                         sceneElements.add(textObject)
                     } else if (element.tagName == "effect") {
@@ -115,6 +117,8 @@ actual fun parseScenarioXML(data: String): GameModels.Scenario {
 
 private var mediaPlayer: MediaPlayer? = null
 
+private var voicePlayer: MediaPlayer? = null
+
 @SuppressLint("DiscouragedApi")
 actual fun playAudioFile(fileName: String, loop: Boolean) {
     // 去除后缀名
@@ -134,6 +138,26 @@ actual fun playAudioFile(fileName: String, loop: Boolean) {
 
 actual fun stopAudio() {
     mediaPlayer?.stop()
+}
+
+@SuppressLint("DiscouragedApi")
+actual fun playVoice(fileName: String) {
+    // 去除后缀名
+    val context = GlobalData.context ?: return
+    val split = fileName.split(".")
+    if (split.isEmpty()) {
+        return
+    }
+    val path = split[0]
+
+    val resourceId = context.resources.getIdentifier(path, "raw", context.packageName)
+    voicePlayer?.stop()
+    voicePlayer = MediaPlayer.create(context, resourceId)
+    voicePlayer?.start()
+    mediaPlayer?.setVolume(0.25f, 0.25f)
+    voicePlayer?.setOnCompletionListener {
+        mediaPlayer?.setVolume(1f, 1f)
+    }
 }
 
 actual fun createDataStore(): DataStore<Preferences>? {

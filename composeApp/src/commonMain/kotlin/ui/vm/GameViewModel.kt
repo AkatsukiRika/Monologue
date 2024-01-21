@@ -8,6 +8,7 @@ import models.GameTypes
 import moe.tlaster.precompose.viewmodel.viewModelScope
 import parseScenarioXML
 import playAudioFile
+import playVoice
 
 class GameViewModel : BaseViewModel<GameState, GameEvent, GameEffect>() {
     companion object {
@@ -134,6 +135,9 @@ class GameViewModel : BaseViewModel<GameState, GameEvent, GameEffect>() {
                     GameTypes.Text.Normal -> {
                         handleNormalText(text = element.content)
                     }
+                }
+                if (!element.voice.isNullOrEmpty()) {
+                    playVoice(fileName = element.voice)
                 }
             } else if (element is GameModels.Effect) {
                 if (element.type == GameTypes.Effect.ChangeFront) {
