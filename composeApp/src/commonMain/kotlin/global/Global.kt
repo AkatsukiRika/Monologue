@@ -15,9 +15,13 @@ import kotlinx.coroutines.launch
 object Global {
     const val LANGUAGE_JP = 0
     const val LANGUAGE_CN = 1
+    const val BGM_VOLUME_MAX = 10
+    const val BGM_VOLUME_MIN = 0
 
     lateinit var Strings: BaseStrings
     val stringsFlow = MutableStateFlow<BaseStrings?>(null)
+
+    val bgmVolumeFlow = MutableStateFlow(BGM_VOLUME_MAX)
 
     val textSpeedMillis: Long = 100L
 
@@ -25,16 +29,23 @@ object Global {
 
     var appPreferences: AppPreferences? = null
 
-    @OptIn(DelicateCoroutinesApi::class)
     fun initApp() {
         createDataStore()?.let { dataStore ->
             Global.dataStore = dataStore
             appPreferences = AppPreferences(dataStore)
 
-            GlobalScope.launch(Dispatchers.IO) {
-                appPreferences?.getLanguage()?.let {
-                    setGlobalLanguage(language = it)
-                }
+            reloadAppPreferences()
+        }
+    }
+
+    @OptIn(DelicateCoroutinesApi::class)
+    fun reloadAppPreferences() {
+        GlobalScope.launch(Dispatchers.IO) {
+            appPreferences?.getLanguage()?.let {
+                setGlobalLanguage(language = it)
+            }
+            appPreferences?.getBGMVolume()?.let {
+                bgmVolumeFlow.emit(it)
             }
         }
     }

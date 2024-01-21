@@ -36,7 +36,7 @@ class StringsJP : BaseStrings {
     override val off: String
         get() = "オフ"
     override val audioVolume: String
-        get() = "オーディオ音量"
+        get() = "BGM音量"
     override val backToGame: String
         get() = "ゲームに戻る"
     override val language: String

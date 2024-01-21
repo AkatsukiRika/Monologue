@@ -7,6 +7,12 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import global.Global
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 import models.GameModels
 import org.w3c.dom.Element
 import org.xml.sax.InputSource
@@ -14,6 +20,7 @@ import java.io.File
 import java.io.StringReader
 import java.nio.charset.StandardCharsets
 import javax.xml.parsers.DocumentBuilderFactory
+import kotlin.math.min
 
 @SuppressLint("DiscouragedApi")
 @Composable
@@ -119,6 +126,7 @@ private var mediaPlayer: MediaPlayer? = null
 
 private var voicePlayer: MediaPlayer? = null
 
+@OptIn(DelicateCoroutinesApi::class)
 @SuppressLint("DiscouragedApi")
 actual fun playAudioFile(fileName: String, loop: Boolean) {
     // 去除后缀名
@@ -129,17 +137,22 @@ actual fun playAudioFile(fileName: String, loop: Boolean) {
     }
     val path = split[0]
 
-    val resourceId = context.resources.getIdentifier(path, "raw", context.packageName)
-    mediaPlayer?.stop()
-    mediaPlayer = MediaPlayer.create(context, resourceId)
-    mediaPlayer?.isLooping = loop
-    mediaPlayer?.start()
+    GlobalScope.launch(Dispatchers.Main) {
+        val resourceId = context.resources.getIdentifier(path, "raw", context.packageName)
+        mediaPlayer?.stop()
+        mediaPlayer = MediaPlayer.create(context, resourceId)
+        val bgmVolume = Global.bgmVolumeFlow.first().toFloat() / Global.BGM_VOLUME_MAX
+        mediaPlayer?.setVolume(bgmVolume, bgmVolume)
+        mediaPlayer?.isLooping = loop
+        mediaPlayer?.start()
+    }
 }
 
 actual fun stopAudio() {
     mediaPlayer?.stop()
 }
 
+@OptIn(DelicateCoroutinesApi::class)
 @SuppressLint("DiscouragedApi")
 actual fun playVoice(fileName: String) {
     // 去除后缀名
@@ -150,14 +163,21 @@ actual fun playVoice(fileName: String) {
     }
     val path = split[0]
 
-    val resourceId = context.resources.getIdentifier(path, "raw", context.packageName)
-    voicePlayer?.stop()
-    voicePlayer = MediaPlayer.create(context, resourceId)
-    voicePlayer?.start()
-    mediaPlayer?.setVolume(0.25f, 0.25f)
-    voicePlayer?.setOnCompletionListener {
-        mediaPlayer?.setVolume(1f, 1f)
+    GlobalScope.launch(Dispatchers.Main) {
+        val resourceId = context.resources.getIdentifier(path, "raw", context.packageName)
+        voicePlayer?.stop()
+        voicePlayer = MediaPlayer.create(context, resourceId)
+        voicePlayer?.start()
+        val bgmVolume = Global.bgmVolumeFlow.first().toFloat() / Global.BGM_VOLUME_MAX
+        mediaPlayer?.setVolume(min(bgmVolume, 0.25f), min(bgmVolume, 0.25f))
+        voicePlayer?.setOnCompletionListener {
+            mediaPlayer?.setVolume(bgmVolume, bgmVolume)
+        }
     }
+}
+
+actual fun setAudioVolume(volume: Float) {
+    mediaPlayer?.setVolume(volume, volume)
 }
 
 actual fun createDataStore(): DataStore<Preferences>? {

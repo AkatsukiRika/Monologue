@@ -36,7 +36,7 @@ class StringsCN : BaseStrings {
     override val off: String
         get() = "关闭"
     override val audioVolume: String
-        get() = "音频音量"
+        get() = "BGM音量"
     override val backToGame: String
         get() = "回到游戏"
     override val language: String

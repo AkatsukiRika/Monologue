@@ -49,6 +49,7 @@ fun StartScene(navigator: Navigator) {
     }
 
     LaunchedEffect(Unit) {
+        Global.reloadAppPreferences()
         playAudioFile(fileName = AUDIO_BGM_TITLE, loop = true)
     }
 }

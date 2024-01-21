@@ -4,15 +4,22 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import global.Global
 import javafx.application.Platform
 import javafx.scene.media.Media
 import javafx.scene.media.MediaPlayer
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 import models.GameModels
 import org.w3c.dom.Element
 import org.xml.sax.InputSource
 import java.io.File
 import java.io.StringReader
 import javax.xml.parsers.DocumentBuilderFactory
+import kotlin.math.min
 
 @Composable
 actual fun getFont(
@@ -115,6 +122,7 @@ private var mediaPlayer: MediaPlayer? = null
 
 private var voicePlayer: MediaPlayer? = null
 
+@OptIn(DelicateCoroutinesApi::class)
 actual fun playAudioFile(fileName: String, loop: Boolean) {
     if (!isJavaFXPlatformInit) {
         Platform.startup {}
@@ -130,13 +138,17 @@ actual fun playAudioFile(fileName: String, loop: Boolean) {
         } else {
             "file://${tempFile.absolutePath}"
         }
-        val media = Media(audioSource)
-        mediaPlayer?.stop()
-        mediaPlayer = MediaPlayer(media)
-        if (loop) {
-            mediaPlayer?.cycleCount = MediaPlayer.INDEFINITE
+        GlobalScope.launch(Dispatchers.Main) {
+            val media = Media(audioSource)
+            mediaPlayer?.stop()
+            mediaPlayer = MediaPlayer(media)
+            val volume = Global.bgmVolumeFlow.first()
+            mediaPlayer?.volume = volume.toDouble() / Global.BGM_VOLUME_MAX
+            if (loop) {
+                mediaPlayer?.cycleCount = MediaPlayer.INDEFINITE
+            }
+            mediaPlayer?.play()
         }
-        mediaPlayer?.play()
     }
 }
 
@@ -144,6 +156,7 @@ actual fun stopAudio() {
     mediaPlayer?.stop()
 }
 
+@OptIn(DelicateCoroutinesApi::class)
 actual fun playVoice(fileName: String) {
     if (!isJavaFXPlatformInit) {
         throw Exception("JavaFX Platform未初始化!")
@@ -158,14 +171,27 @@ actual fun playVoice(fileName: String) {
         } else {
             "file://${tempFile.absolutePath}"
         }
-        val media = Media(audioSource)
-        voicePlayer?.stop()
-        voicePlayer = MediaPlayer(media)
-        voicePlayer?.play()
-        mediaPlayer?.volume = 0.25
-        voicePlayer?.setOnEndOfMedia {
-            mediaPlayer?.volume = 1.0
+        GlobalScope.launch(Dispatchers.Main) {
+            val media = Media(audioSource)
+            voicePlayer?.stop()
+            voicePlayer = MediaPlayer(media)
+            voicePlayer?.play()
+            val bgmVolume = Global.bgmVolumeFlow.first().toDouble() / Global.BGM_VOLUME_MAX
+            mediaPlayer?.volume = min(bgmVolume, 0.25)
+            voicePlayer?.setOnEndOfMedia {
+                mediaPlayer?.volume = bgmVolume
+            }
         }
+    }
+}
+
+actual fun setAudioVolume(volume: Float) {
+    if (!isJavaFXPlatformInit) {
+        throw Exception("JavaFX Platform未初始化!")
+    }
+
+    Platform.runLater {
+        mediaPlayer?.volume = volume.toDouble()
     }
 }
 

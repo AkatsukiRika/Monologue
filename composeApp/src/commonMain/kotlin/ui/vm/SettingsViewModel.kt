@@ -2,6 +2,7 @@ package ui.vm
 
 import global.Global
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import moe.tlaster.precompose.viewmodel.viewModelScope
 
@@ -14,6 +15,10 @@ class SettingsViewModel : BaseViewModel<SettingsState, SettingsEvent, SettingsEf
                     copy(language = language)
                 }
             }
+            val bgmVolume = Global.bgmVolumeFlow.first()
+            emitState {
+                copy(bgmVolume = bgmVolume)
+            }
         }
     }
 
@@ -25,6 +30,12 @@ class SettingsViewModel : BaseViewModel<SettingsState, SettingsEvent, SettingsEf
         when (event) {
             is SettingsEvent.ChangeLanguage -> {
                 changeLanguage(event.language)
+            }
+            is SettingsEvent.VolumeDown -> {
+                decreaseVolume()
+            }
+            is SettingsEvent.VolumeUp -> {
+                increaseVolume()
             }
         }
     }
@@ -39,14 +50,41 @@ class SettingsViewModel : BaseViewModel<SettingsState, SettingsEvent, SettingsEf
             }
         }
     }
+
+    private fun decreaseVolume() {
+        val state = uiState.value
+        viewModelScope.launch(Dispatchers.IO) {
+            if (state.bgmVolume - 1 >= Global.BGM_VOLUME_MIN) {
+                Global.appPreferences?.setBGMVolume(state.bgmVolume - 1)
+                emitState {
+                    copy(bgmVolume = state.bgmVolume - 1)
+                }
+            }
+        }
+    }
+
+    private fun increaseVolume() {
+        val state = uiState.value
+        viewModelScope.launch(Dispatchers.IO) {
+            if (state.bgmVolume + 1 <= Global.BGM_VOLUME_MAX) {
+                Global.appPreferences?.setBGMVolume(state.bgmVolume + 1)
+                emitState {
+                    copy(bgmVolume = state.bgmVolume + 1)
+                }
+            }
+        }
+    }
 }
 
 data class SettingsState(
-    val language: Int = Global.LANGUAGE_JP
+    val language: Int = Global.LANGUAGE_JP,
+    val bgmVolume: Int = Global.BGM_VOLUME_MAX
 ) : BaseState
 
 sealed class SettingsEvent : BaseEvent {
     data class ChangeLanguage(val language: Int) : SettingsEvent()
+    data object VolumeDown : SettingsEvent()
+    data object VolumeUp : SettingsEvent()
 }
 
 sealed class SettingsEffect : BaseEffect

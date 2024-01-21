@@ -125,7 +125,15 @@ private fun MainColumn(navigator: Navigator) {
 
             Spacer(modifier = Modifier.width(56.dp))
 
-            AudioVolumeRow(currentVolume = 10)
+            AudioVolumeRow(
+                currentVolume = state.bgmVolume,
+                onVolumeMinus = {
+                    viewModel.dispatch(SettingsEvent.VolumeDown)
+                },
+                onVolumePlus = {
+                    viewModel.dispatch(SettingsEvent.VolumeUp)
+                }
+            )
         }
 
         Spacer(modifier = Modifier.height(18.dp))
@@ -328,12 +336,17 @@ private fun LanguageRow(
 }
 
 @Composable
-private fun AudioVolumeRow(modifier: Modifier = Modifier, currentVolume: Int) {
+private fun AudioVolumeRow(
+    modifier: Modifier = Modifier,
+    currentVolume: Int,
+    onVolumeMinus: () -> Unit,
+    onVolumePlus: () -> Unit
+) {
     Row(
         modifier = modifier,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        VolumeMinusIcon()
+        VolumeMinusIcon(onClick = onVolumeMinus)
 
         Spacer(modifier = Modifier.width(32.dp))
 
@@ -344,7 +357,7 @@ private fun AudioVolumeRow(modifier: Modifier = Modifier, currentVolume: Int) {
 
         Spacer(modifier = Modifier.width(32.dp))
 
-        VolumePlusIcon()
+        VolumePlusIcon(onClick = onVolumePlus)
     }
 }
 
@@ -359,19 +372,25 @@ private fun DivideLine() {
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
-private fun VolumeMinusIcon() {
+private fun VolumeMinusIcon(onClick: () -> Unit) {
     Image(
         painter = painterResource("drawable/icon_triangle_left.png"),
-        contentDescription = null
+        contentDescription = null,
+        modifier = Modifier.clickable {
+            onClick()
+        }
     )
 }
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
-private fun VolumePlusIcon() {
+private fun VolumePlusIcon(onClick: () -> Unit) {
     Image(
         painter = painterResource("drawable/icon_triangle_right.png"),
-        contentDescription = null
+        contentDescription = null,
+        modifier = Modifier.clickable {
+            onClick()
+        }
     )
 }
 
