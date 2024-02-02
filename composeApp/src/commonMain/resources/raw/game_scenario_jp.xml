@@ -4,6 +4,7 @@
     </scene>
 
     <scene id="1" back="room" front="girl-wry-neck">
+        <music type="play" file="bgm_01.mp3" />
         <text type="speech" character="りえ" time="6/1" voice="voice_01.wav">「来たよ！」</text>
         <text type="normal">今日も、チャイムすら鳴らさず「彼女」が部屋に飛び込んでくる。</text>
         <text type="normal">夏服。そうか、今日から六月なんだな。ということは、昨日がセーラー服の脱がし納めだったという事か。正確には、最近は脱がす手間さえ惜しんでいるのだけど。</text>
@@ -15,6 +16,7 @@
     </scene>
 
     <scene id="2" back="studio" front="girl-wry-neck">
+        <music type="play" file="bgm_02.mp3" />
         <text type="normal">街に一軒きりの潰れそうな楽器屋の、音が漏れまくりのスタジオで、特に明確な目標とか野心とかも無く、轟音を鳴らし続けていた。</text>
         <text type="normal">華奢で女の子みたいな風貌で、鈍重な鉈のようなリフを刻むギターのKと、生で蝙蝠を食いちぎっても全く違和感のないドラムのDと、イマイチ存在感が薄いが一応は作詞とベース担当の自分と。</text>
         <text type="normal">そして、隅っこに座ってグダグダな練習風景を飽きもせず眺め続けていた「彼女」と。</text>
@@ -25,6 +27,7 @@
     </scene>
 
     <scene id="3" back="building" front="girl-serious">
+        <music type="play" file="bgm_03.mp3" />
         <text type="normal">何度も、家に帰るように諭した。</text>
         <text type="normal">犯罪を怖れたわけじゃない。畏れたのは、もっと別のことだった。</text>
         <text type="normal">だけど無駄だった。彼女は頑なだった。</text>
@@ -41,6 +44,7 @@
     </scene>
 
     <scene id="4" back="black">
+        <music type="stop" />
         <text type="normal">ただただ、代替感と空虚感しか無かったこと。</text>
         <text type="normal">家族は穏やかだった。</text>
         <text type="normal">その平凡を嫌悪し、ある日、家を出た。</text>
@@ -56,6 +60,7 @@
     </scene>
 
     <scene id="6" back="room" front="girl-wry-neck">
+        <music type="play" file="bgm_03.mp3" />
         <text type="normal">一撃で。</text>
         <text type="normal">ブッ壊されていたのは自分だった。</text>
         <text type="normal">卑怯なのは、自分。今更そんな過ぎた話をしても、贖罪になどなりもしないのに。</text>
@@ -85,6 +90,7 @@
     </scene>
 
     <scene id="9" back="street" front="girl-happy">
+        <music type="play" file="bgm_04.mp3" />
         <text type="normal">それからは陳腐なエロゲも赤面するような日々だった。</text>
         <text type="normal">給食の残りで養われたりした。</text>
         <text type="normal">修学旅行先から、イニシャルを彫った楽器型のキーホルダーのお土産など買ってきてくれた。</text>
@@ -121,6 +127,7 @@
     </scene>
 
     <scene id="12" back="room">
+        <music type="stop" />
         <text type="normal">ある日を境に、前触れなく「彼女」が消えた。</text>
         <text type="normal">十日経った。</text>
         <text type="normal">一月経った。</text>
@@ -141,6 +148,7 @@
     </scene>
 
     <scene id="15" back="door" front="girl-mature">
+        <music type="play" file="bgm_05.mp3" />
         <text type="normal">夏が過ぎ、秋も往きかけた頃、前触れ一つ無く「彼女」が部屋に飛び込んできた。</text>
         <text type="normal">何が来たというのか。</text>
         <text type="normal">飛び込んできた「彼女」を抱擁した時、全て、瞬時に理解した。</text>
@@ -183,6 +191,7 @@
     </scene>
 
     <scene id="20" back="smoke" front="girl-wry-neck" frontAlpha="0.5">
+        <music type="play" file="bgm_06.mp3" />
         <text type="normal">それは願望が生んだ夢だったかもしれない。</text>
         <text type="normal">ある夜、携帯が初めて鳴った。</text>
         <text type="normal">幸せそうな声だった。</text>

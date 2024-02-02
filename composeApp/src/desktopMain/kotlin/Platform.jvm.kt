@@ -90,6 +90,14 @@ actual fun parseScenarioXML(data: String): GameModels.Scenario {
                             image = image
                         )
                         sceneElements.add(effectObject)
+                    } else if (element.tagName == "music") {
+                        val type = element.getAttribute("type")
+                        val file = element.getAttribute("file")
+                        val musicObject = GameModels.Music(
+                            type = type,
+                            file = file
+                        )
+                        sceneElements.add(musicObject)
                     } else {
                         // no-op
                     }

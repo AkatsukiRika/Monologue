@@ -29,5 +29,10 @@ object GameModels {
         val image: String? = null       // 仅当type为show-image时需要
     ) : SceneElement(type)
 
+    data class Music(
+        override val type: String,
+        val file: String
+    ) : SceneElement(type)
+
     open class SceneElement(open val type: String)
 }

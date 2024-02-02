@@ -32,7 +32,7 @@ import ui.common.CommonButton
 import ui.common.PixelText
 import kotlin.system.exitProcess
 
-private const val AUDIO_BGM_TITLE = "title_bgm.mp3"
+private const val AUDIO_BGM_TITLE = "op.mp3"
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable

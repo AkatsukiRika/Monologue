@@ -62,4 +62,9 @@ object GameTypes {
             else -> null
         }
     }
+
+    object Music {
+        const val Play = "play"
+        const val Stop = "stop"
+    }
 }

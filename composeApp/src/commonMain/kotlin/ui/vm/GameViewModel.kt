@@ -9,12 +9,9 @@ import moe.tlaster.precompose.viewmodel.viewModelScope
 import parseScenarioXML
 import playAudioFile
 import playVoice
+import stopAudio
 
 class GameViewModel : BaseViewModel<GameState, GameEvent, GameEffect>() {
-    companion object {
-        const val AUDIO_BGM_MAIN = "main_bgm.mp3"
-    }
-
     private var scenario: GameModels.Scenario? = null
 
     private var currentScene: GameModels.Scene? = null
@@ -22,7 +19,7 @@ class GameViewModel : BaseViewModel<GameState, GameEvent, GameEffect>() {
     private var currentSceneElement: GameModels.SceneElement? = null
 
     init {
-        playAudioFile(fileName = AUDIO_BGM_MAIN, loop = true)
+        stopAudio()
     }
 
     override fun getInitState(): GameState {
@@ -138,6 +135,8 @@ class GameViewModel : BaseViewModel<GameState, GameEvent, GameEffect>() {
                 }
                 if (!element.voice.isNullOrEmpty()) {
                     playVoice(fileName = element.voice)
+                } else {
+                    // no-op
                 }
             } else if (element is GameModels.Effect) {
                 if (element.type == GameTypes.Effect.ChangeFront) {
@@ -147,6 +146,15 @@ class GameViewModel : BaseViewModel<GameState, GameEvent, GameEffect>() {
                 } else {
                     emitEffect(GameEffect.ShowEffect(effect = element.type))
                 }
+            } else if (element is GameModels.Music) {
+                if (element.type == GameTypes.Music.Play) {
+                    playAudioFile(fileName = element.file)
+                } else {
+                    stopAudio()
+                }
+                clickNext()
+            } else {
+                // no-op
             }
         }
     }
