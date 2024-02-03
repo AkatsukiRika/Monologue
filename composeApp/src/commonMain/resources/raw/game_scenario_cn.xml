@@ -1,0 +1,235 @@
+<scenario language="cn">
+    <scene id="0" back="black">
+        <text type="special-white">时间以外空无一物，那座小丘上的那座小镇中。\n那样的两人，确确实实地存在过。</text>
+    </scene>
+
+    <scene id="1" back="room" front="girl-wry-neck">
+        <music type="play" file="bgm_01.mp3" />
+        <text type="speech" character="理惠" time="6/1" voice="voice_01.wav">「我来了呦！」</text>
+        <text type="normal">今天也是一样，连门铃也不按，「她」就飞奔进我的房间。</text>
+        <text type="normal">夏装。这样啊，今天已经到六月了。这也就是说，昨天就是脱下那身水手服的最后一次了。不，正确来说，最近是连动手去脱的功夫也舍不得去浪费的。</text>
+        <text type="normal">弄得衣服上都是烟味就不好了，被以这样的理由要求强行戒烟已经多久了呢？一般来说，戒烟时期体重会有所增加，但在我身上却没有发生这种事情。</text>
+        <text type="normal">空旷如野的小镇。什么也没有的房间。要做的事情，也仅有一件了吧。</text>
+        <text type="normal">大张旗鼓的开发使家乡的山岗（30年前）被改建后的「New Town」所代替。由于取舍难以抉择、复杂的权利纷争以及其他原因的影响，这强制的开发一度暂停，而像图章那样稀稀拉拉的房子也零星建起……构成这一起开始衰老的城市。</text>
+        <text type="normal">一座似乎只有引入三流大学才能使自己的死期延缓的城市。</text>
+        <text type="normal">时间以外空无一物，那座小丘上的那座小镇中。\n那样的两人，确确实实地存在过。</text>
+    </scene>
+
+    <scene id="2" back="studio" front="girl-wry-neck">
+        <music type="play" file="bgm_02.mp3" />
+        <text type="normal">镇上的一角，有一家几近崩坏的乐器屋，里面的工作室一个劲地泄漏着乐器的声音。并不是有什么特别的目标或是什么野心，只是一直持续着那样轰鸣的音响罢了。</text>
+        <text type="normal">乐队的成员有身材苗条而长相女性化、用吉他弹奏着像是钢板一样厚重的Riff的K，和即便说是生吃过蝙蝠也毫不显得违和的鼓手D，还有存在感微薄弱但姑且算是能够胜任的作词与作曲和贝斯演奏的自己。</text>
+        <text type="normal">最后，还有静静地坐在角落，娓娓眺望这枯燥的乐队合练的「她」。</text>
+        <text type="normal">真是无论何处都能见到的光景。</text>
+        <text type="normal">为什么，会是自己呢？</text>
+        <text type="normal">或许这就是本能的反复无常吧，至少我是这样理解的。事实上，说不定确乎如此。回家路上，与K分别，D也去打零工，回过神来之后“她”已经跟了过来。</text>
+        <text type="normal">跟着我来到了空无一物的，自己的房间。</text>
+    </scene>
+
+    <scene id="3" back="building" front="girl-serious">
+        <music type="play" file="bgm_03.mp3" />
+        <text type="normal">曾多次劝说她回家。</text>
+        <text type="normal">并不是害怕犯罪，所畏惧的是别的事情。</text>
+        <text type="normal">但这些话全都没有起作用。她真的是个顽固的孩子。</text>
+        <text type="normal">自己房间的门，是一道分隔世界的境界线。一旦打开便无法回来这一点我是很清楚的。</text>
+        <text type="normal">因此我威吓了她，讲述了一段自私自利的往事。</text>
+        <text type="normal">曾经的我，大部分想要的东西已然得到。</text>
+        <text type="normal">但真正期冀的东西却没能抓住。</text>
+        <text type="normal">我所倾慕的那位清秀动人的姑娘，因为被发现出演了AV而从班级里销声匿迹。</text>
+        <text type="normal">而与此同时，思恋着我的另一位女生，虽然对她并无明确的好感，我却利用了她的感情，宛如活体实验的道具般，将她七零八落地毁坏了。</text>
+        <text type="normal">尽管如此，怎样的要求她却都不曾拒绝。</text>
+        <text type="normal">已经，连想要继续尝试的念头都消却了。</text>
+        <text type="normal">最终，她真的崩溃了。</text>
+        <text type="normal">尽管如此，我对此也是丝毫没有过罪恶感。</text>
+    </scene>
+
+    <scene id="4" back="black">
+        <music type="stop" />
+        <text type="normal">从中滋生的，也仅仅是代替感与空虚感。</text>
+        <text type="normal">家族生活还是一样平顺。</text>
+        <text type="normal">对那样的平凡感到厌恶，某日，离开了那个家。</text>
+        <text type="normal">没有生活来源的我，只得出卖着自己，同时也出卖着他人。自暴自弃的人对他人所施加的是何等的残忍，自己以身体、以灵魂，初次真正地体味到了。</text>
+        <text type="normal">资金很快有了着落。</text>
+        <text type="normal">但这代价却是，让自己的履历书添上了脏污的一页，同时对性失去了幻想并终生腻烦之。</text>
+        <text type="normal">但是，得知这些的「她」却完全没有感到害怕。</text>
+    </scene>
+
+    <scene id="5" back="room" front="girl-serious">
+        <text type="speech" character="理惠" time="6/18 傍晚" voice="voice_02.wav">「这只是受过伤的人的心灵脆弱的体现呢。」</text>
+        <effect type="red-turn" />
+    </scene>
+
+    <scene id="6" back="room" front="girl-wry-neck">
+        <music type="play" file="bgm_03.mp3" />
+        <text type="normal">一击。</text>
+        <text type="normal">被击溃的却是自己。</text>
+        <text type="normal">卑怯的人，是我。现在已经说了这么多过分的话，也没有丝毫尝试去贖罪的意思。</text>
+        <text type="normal">「她」一点没有退避的想法，我自己却没有能力去下决心。</text>
+        <text type="normal">让「她」做下了决定，这对于我来说这难道还是除了逃避责任以外的反应么？真该诅咒自己。</text>
+        <text type="normal">为什么要像这样，无故坚持着将活生生的自己埋葬的生活方式呢？</text>
+        <text type="normal">对于你而言我或许是可以替代的，但对我而言，你却是唯一啊。</text>
+    </scene>
+
+    <scene id="7" back="room" front="girl-happy">
+        <text type="normal">划分世界的门，就这样打开了。</text>
+        <text type="normal">呈现在面前的，是很早以前就应该放弃殆尽的世界。仍然无法找到自己拥有任何值得被爱的价值。</text>
+        <text type="normal">那价值到底在我身上的何处呢？</text>
+        <text type="normal">像这样，无论做什么都必须知道「为什么」，始终是我改不掉的坏毛病。</text>
+        <text type="normal">明明身处于那样没有理由的领域中。</text>
+        <text type="normal">我便是从此以后，为她所破坏，而后重新构筑的。她真的是很痛苦。</text>
+        <text type="normal">然而，为什么流泪的却是我呢？</text>
+        <text type="normal">而我又为何，放弃了为了自己的快乐而持续到最后的事情呢？</text>
+        <text type="normal">为何，假装之前的一切都已经结束了呢？</text>
+        <text type="normal">或许这是因为，我又一次变回了「人」的缘故吧。</text>
+        <text type="normal">那个时候，是这样想的。</text>
+        <text type="normal">还有，稍微讽刺一下放弃后得到的命运。</text>
+    </scene>
+
+    <scene id="8" back="room" front="girl-wry-neck">
+        <text type="speech" character="理惠" time="6/23 傍晚" voice="voice_03.wav">「我还是个孩子，所以不要叫『那女人』，而是『那孩子』哦！」</text>
+    </scene>
+
+    <scene id="9" back="street" front="girl-happy">
+        <music type="play" file="bgm_04.mp3" />
+        <text type="normal">随之而来的是令陈腐的黄色游戏都脸红的日子。</text>
+        <text type="normal">她会带吃剩下的学校午餐给我。</text>
+        <text type="normal">从修学旅行的目的地，她买了刻有我名字首字母的乐器型钥匙链等等特产给我。</text>
+        <text type="normal">周日，我潜入了她的母校。</text>
+        <text type="speech" character="理惠" time="7/30 上午" voice="voice_04.wav">「直到不久前，我都还在这里读书呢」</text>
+        <text type="normal">在并排贴着笨拙的书法汉字「聪明的孩子」的无人教室，我把她压在墙上，做了那事。</text>
+        <text type="normal">这剧烈的反差让我的大脑快要融化了。</text>
+    </scene>
+
+    <scene id="10" back="room" front="girl-shy">
+        <text type="normal">我想，正好过了两周左右。</text>
+        <text type="normal">「你明白高潮是什么意思了吧？」</text>
+        <effect type="climax-blink" />
+        <text type="normal">在我的诱导下，她点了点头。直到余韵也消散，重新变得理智，她一脚踢开我，说到「去死吧…！」</text>
+        <text type="normal">然后，平均每周20次。</text>
+        <text type="normal">过去，我一直想做这种事情。我漠然地想着。</text>
+    </scene>
+
+    <scene id="11" back="room" front="girl-happy">
+        <text type="normal">一旦潘多拉的盒子打开，剩下的就快了。</text>
+        <text type="normal">只是变得无限贪婪而已。</text>
+        <text type="normal">然后，我怀着像闪回一样迟来的罪恶感反思着。</text>
+        <text type="normal">为什么我不能给予现在理所当然地享受的幸福呢？</text>
+        <text type="normal">相反，我只能给予绝望和精神的破坏。</text>
+        <text type="normal">我真的有资格享受现在的一切吗？</text>
+        <text type="normal">即使是这样微弱的停滞，也会随着懒惰而甘美的时间融化，烟消云散。</text>
+        <text type="normal">几乎每天傍晚都在等待她的到来。</text>
+        <text type="normal">不喜欢使用手机的我，没有任何与她进行联络的手段。</text>
+        <text type="speech" character="理惠" time="8/15 傍晚" voice="voice_05.wav">「我还会再来的。」</text>
+        <text type="normal">那般除了这句话以外没有任何保障可言的约定，却又如细线般勉强牵绊着我的每一天。</text>
+        <text type="normal">虽然明明知道不可能一直继续这样的生活的。</text>
+        <text type="normal">妄想着如果时间不会稍纵即逝，而是能够截流、汇集而积存下来的话，那该有多好。</text>
+        <effect type="red-turn" />
+    </scene>
+
+    <scene id="12" back="room">
+        <music type="stop" />
+        <text type="normal">突然有一天，「她」毫无预兆地销声匿迹了。</text>
+        <text type="normal">十天过去了。</text>
+        <text type="normal">一个月过去了。</text>
+        <text type="normal">「啊，果然。」我这样想着。</text>
+        <text type="normal">归根结底，这是由残酷的基因的神明所支配的，本能的反复无常罢了。</text>
+        <text type="normal">对我而言，那实在是美妙到显得过分奢侈的生活也就此完结。</text>
+        <text type="normal">不过是回到了原点而已。</text>
+    </scene>
+
+    <scene id="13" back="black">
+        <text type="normal">这样就结束了。\n如果这个故事真的就此完结的话，那我也算是得到了拯救与解脱吧。</text>
+        <text type="normal">但真正「终焉的开始」，却是在三个月以后拉开序幕的。</text>
+        <effect type="red-turn" />
+    </scene>
+
+    <scene id="14" back="room" front="girl-mature">
+        <text type="speech" character="理惠" time="9/26 上午" voice="voice_01.wav">「我来了呦！」</text>
+    </scene>
+
+    <scene id="15" back="door" front="girl-mature">
+        <music type="play" file="bgm_05.mp3" />
+        <text type="normal">夏天已然过去，秋天即将到来的时节，「她」毫无预兆地飞奔到我的房间。</text>
+        <text type="normal">到底指的是什么的到来呢。</text>
+        <text type="normal">将飞奔而来的「她」紧紧拥抱的那一刻，一切的一切，都在那一瞬间理解了。</text>
+        <text type="normal">那肌肤的触感，我已经几乎可以说是熟知到厌恶的程度。这是妊娠期女人的身体才会有的。</text>
+        <text type="normal">然后，她很快就明白，这件事瞒不住我了。</text>
+    </scene>
+
+    <scene id="16" back="black" front="girl-scared">
+        <text type="special-red" voice="voice_06.wav">「为什么你会知道？？？？？？？」</text>
+    </scene>
+
+    <scene id="17" back="room-scary">
+        <text type="scary">抽泣着。</text>
+        <text type="scary">我太过小看人与人之间的「思慕之情」了。</text>
+        <text type="scary">「她」知道，如果将这件事告知，我将会得出怎样无法承担的结论。</text>
+        <text type="scary">因此，选择了一个人做下决定，一个人独自背负。</text>
+        <text type="scary">从始至今，一直未变的这倔强。</text>
+    </scene>
+
+    <scene id="18" back="scary">
+        <text type="scary">对不起。对不起。</text>
+        <text type="scary">面对用锐器竭力划伤自己手臂和乳房的「她」，我所能做到的也仅有用尽全力将她压制，使之停下手中的刀刃了。</text>
+        <text type="scary">然后就是恐怕已经可以说是抚慰与慈爱尽失、目的与考虑全无，除去让思维暂时停止之外一无所图的性爱。</text>
+        <text type="scary">一如起效时间日益缩减的、希望渺茫的延命治疗那样。</text>
+        <text type="scary">「她」来探访的日子也终于迎来了落幕。间隔一天、间隔两天…后来连这都像是芸芸众生之中的一粒尘埃般飘散，伴随着二人微妙的关系，逐渐步向临终。</text>
+        <text type="scary">…不久，心电图上，描绘出了一条平坦的直线。</text>
+        <effect type="invert-color" />
+    </scene>
+
+    <scene id="19" back="hospital">
+        <text type="normal">这一次，这一次终于，无法再等待下去了。</text>
+        <text type="normal">第一次亲自到常来探访我的「她」家去。然后，到那一刻才知道为何「她」从未谈及家族之事的原因了。就像是被赐予了当头棒喝般认识到眼前景象的残酷与真实。</text>
+        <text type="normal">荒芜的庭院。生锈的自行车。没有上锁的玄关。刺鼻的霉变气息。酒精瓶散乱摆放的厨房。</text>
+        <text type="normal">几张潦草地标注有「本月开销」的一万日元纸币。墙壁上有孔隙。还有已经破裂的、很旧很旧的照片。</text>
+        <text type="normal">简直就像是兽穴那样，其中唯一没有堆积着灰尘的、通向二楼的深处的足迹所指引的方向上，如同空壳般的某物被装载在担架之上，随着鸣笛声一起远去了。</text>
+        <text type="normal">「它」活了下来。</text>
+        <text type="normal">但是，也仅此而已。</text>
+        <text type="normal">事后负责此事的刑警先生告诉我说，「它」会被送到福利机构。</text>
+        <effect type="turn-white" />
+    </scene>
+
+    <scene id="20" back="smoke" front="girl-wry-neck" frontAlpha="0.5">
+        <music type="play" file="bgm_06.mp3" />
+        <text type="normal">这或许便是由祈愿所诞生的梦也说不定。</text>
+        <text type="normal">那天夜晚，手机第一次鸣响起来。</text>
+        <text type="normal">听起来如此幸福的那个声音。</text>
+        <text type="normal">仅仅是安眠的那个声音。</text>
+        <text type="normal">让人感到宁静的那个声音。</text>
+        <text type="normal">不知道她喝下去了什么，只知道的是，远远超过了致死量罢了。</text>
+        <text type="normal">渐行渐远而模糊不清的话语，直到最后的最后一直重复着。</text>
+        <text type="normal">不久后，什么也听不到了。在300km以外的彼方。</text>
+        <text type="normal">那难道不应该是我的台词吗？</text>
+        <text type="normal" voice="voice_07.wav">对不起。谢谢。对不起。谢谢。对不起。谢谢。</text>
+        <effect type="change-front" front="girl-happy" frontAlpha="0.5" />
+        <effect type="show-image" image="girl-pregnant-phone" />
+    </scene>
+
+    <scene id="21" back="trash">
+        <text type="normal">「请不要放开我的手」</text>
+        <text type="normal">在那之后曾有多次，有人对我伸出援手。</text>
+        <text type="normal">但我一次都没有回握。</text>
+        <text type="normal">这就是，选择将活生生的自己埋葬的生活方式吧。</text>
+        <text type="normal" voice="voice_08.wav">「打算用这样的方法，对自己进行惩罚么？」</text>
+        <text type="normal">从远方传来，那个恶作剧般的声音一定是听错了。</text>
+        <text type="normal" voice="voice_09.wav">「我是不是，很幸福呢？」</text>
+        <effect type="change-front" front="girl-mature-happy" frontAlpha="0.5" />
+        <effect type="change-front" front="girl-serious" />
+    </scene>
+
+    <scene id="22" back="room">
+        <text type="normal">经历这些后我所失去的，是对死亡的恐惧。不，虽说厌恶着身体上的疼痛。死亡于我而言是救赎。所以，要尽可能去长久地，活下去。</text>
+        <text type="normal">虽然身为无神论者，不过，偶尔被日常生活中的噪音打断思绪的时候，记忆总会趁机悄然溯回。</text>
+        <text type="normal">假如我能拥有那份侥幸，在死后仍有意识残留的话，我将不假思索地归返至那段时间、那片空间。</text>
+    </scene>
+
+    <scene id="23" back="room-dark">
+        <text type="special-yellow">回到除时间以外别无他物的丘上小镇之中；\n回到宛如没有出口的子宫那样的，那间小屋里。</text>
+        <effect type="change-front" front="girl-wry-neck" />
+    </scene>
+
+    <scene id="24" back="black">
+        <text type="special-white">BAD END</text>
+    </scene>
+</scenario>

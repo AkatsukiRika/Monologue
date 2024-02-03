@@ -22,6 +22,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import getScenarioXML
+import global.Global
+import global.strings.StringsCN
 import models.GameTypes
 import moe.tlaster.precompose.flow.collectAsStateWithLifecycle
 import moe.tlaster.precompose.navigation.Navigator
@@ -165,7 +167,8 @@ fun GameScene(navigator: Navigator) {
     }
 
     LaunchedEffect(Unit) {
-        val xmlText = getScenarioXML("game_scenario_jp.xml")
+        val fileName = if (Global.Strings is StringsCN) "game_scenario_cn.xml" else "game_scenario_jp.xml"
+        val xmlText = getScenarioXML(fileName)
         viewModel.dispatch(GameEvent.LoadScenario(xmlText))
     }
 
