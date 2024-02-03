@@ -83,7 +83,7 @@ fun NormalText(
         PixelText(
             text = currentText,
             fontSize = 20.sp,
-            color = Color.White,
+            color = if (state.showSpecialYellowText) Color.Yellow else Color.White,
             lineHeight = lineHeight,
             modifier = Modifier
                 .align(if (centerText) Alignment.Center else Alignment.TopStart)

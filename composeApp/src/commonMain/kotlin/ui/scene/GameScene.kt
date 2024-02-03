@@ -120,7 +120,7 @@ fun GameScene(navigator: Navigator) {
                 )
             }
 
-            state.showNormalText -> {
+            state.showNormalText || state.showSpecialYellowText -> {
                 NormalText(
                     modifier = Modifier
                         .align(Alignment.BottomCenter)

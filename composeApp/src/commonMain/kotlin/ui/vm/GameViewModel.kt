@@ -133,8 +133,11 @@ class GameViewModel : BaseViewModel<GameState, GameEvent, GameEffect>() {
                         handleScaryText(text = element.content)
                     }
 
-                    GameTypes.Text.Normal -> {
-                        handleNormalText(text = element.content)
+                    GameTypes.Text.Normal, GameTypes.Text.SpecialYellow -> {
+                        handleNormalText(
+                            text = element.content,
+                            isSpecialYellow = element.type == GameTypes.Text.SpecialYellow
+                        )
                     }
                 }
                 if (!element.voice.isNullOrEmpty()) {
@@ -221,14 +224,15 @@ class GameViewModel : BaseViewModel<GameState, GameEvent, GameEffect>() {
         }
     }
 
-    private fun handleNormalText(text: String) {
+    private fun handleNormalText(text: String, isSpecialYellow: Boolean = false) {
         emitState {
             copy(
                 showSpecialWhiteText = false,
                 showSpeechText = false,
-                showNormalText = true,
+                showNormalText = isSpecialYellow.not(),
                 showScaryText = false,
                 showSpecialRedText = false,
+                showSpecialYellowText = isSpecialYellow,
                 currentText = text
             )
         }
@@ -260,6 +264,7 @@ data class GameState(
     val showNormalText: Boolean = false,
     val showScaryText: Boolean = false,
     val showSpecialRedText: Boolean = false,
+    val showSpecialYellowText: Boolean = false,
     val showSettingsScreen: Boolean = false,
     val currentBack: String = "",
     val currentFront: String = "",

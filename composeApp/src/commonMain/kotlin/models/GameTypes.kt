@@ -15,6 +15,7 @@ object GameTypes {
         const val Speech = "speech"
         const val SpecialWhite = "special-white"
         const val SpecialRed = "special-red"
+        const val SpecialYellow = "special-yellow"
         const val Scary = "scary"
     }
 

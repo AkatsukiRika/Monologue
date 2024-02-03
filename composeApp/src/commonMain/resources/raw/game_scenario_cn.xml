@@ -157,7 +157,7 @@
     </scene>
 
     <scene id="16" back="black" front="girl-scared">
-        <text type="special-red" voice="voice_06.wav">「为什么你会知道？？？？？？？」</text>
+        <text type="special-red" voice="voice_06.wav">「為什么你会知道？？？？？？？」</text>
     </scene>
 
     <scene id="17" back="room-scary">
