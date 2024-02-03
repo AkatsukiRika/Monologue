@@ -20,6 +20,7 @@ object Global {
 
     lateinit var Strings: BaseStrings
     val stringsFlow = MutableStateFlow<BaseStrings?>(null)
+    val skipTextAnimCountFlow = MutableStateFlow(0)
 
     val bgmVolumeFlow = MutableStateFlow(BGM_VOLUME_MAX)
 

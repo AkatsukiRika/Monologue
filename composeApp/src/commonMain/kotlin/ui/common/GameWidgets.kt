@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import global.Global
 import kotlinx.coroutines.delay
+import moe.tlaster.precompose.flow.collectAsStateWithLifecycle
 import ui.vm.GameState
 import utils.sideBorders
 
@@ -63,7 +64,7 @@ fun NormalText(
     skipTextAnim: (() -> Int)? = null
 ) {
     var currentText by remember { mutableStateOf("") }
-    var lastSkipAnim by remember { mutableIntStateOf(0) }
+    val lastSkipAnim = Global.skipTextAnimCountFlow.collectAsStateWithLifecycle().value
     val skipAnim = skipTextAnim?.invoke() ?: 0
 
     Box(
@@ -94,7 +95,7 @@ fun NormalText(
         if (skipAnim > 0 && skipAnim > lastSkipAnim) {
             currentText = state.currentText.replace("\\n", "\n")
             onUpdateTextAnimStatus?.invoke(false)
-            lastSkipAnim = skipAnim
+            Global.skipTextAnimCountFlow.emit(skipAnim)
         } else {
             onUpdateTextAnimStatus?.invoke(true)
             currentText = ""
@@ -118,7 +119,7 @@ fun ScaryText(
     skipTextAnim: (() -> Int)? = null
 ) {
     var currentText by remember { mutableStateOf("") }
-    var lastSkipAnim by remember { mutableIntStateOf(0) }
+    val lastSkipAnim = Global.skipTextAnimCountFlow.collectAsStateWithLifecycle().value
     val skipAnim = skipTextAnim?.invoke() ?: 0
 
     Box(
@@ -142,7 +143,7 @@ fun ScaryText(
         if (skipAnim > 0 && skipAnim > lastSkipAnim) {
             currentText = state.currentText.replace("\\n", "\n")
             onUpdateTextAnimStatus?.invoke(false)
-            lastSkipAnim = skipAnim
+            Global.skipTextAnimCountFlow.emit(skipAnim)
         } else {
             onUpdateTextAnimStatus?.invoke(true)
             currentText = ""

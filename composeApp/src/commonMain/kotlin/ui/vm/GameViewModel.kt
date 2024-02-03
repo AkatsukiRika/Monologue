@@ -1,5 +1,6 @@
 package ui.vm
 
+import global.Global
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -20,6 +21,9 @@ class GameViewModel : BaseViewModel<GameState, GameEvent, GameEffect>() {
 
     init {
         stopAudio()
+        viewModelScope.launch {
+            Global.skipTextAnimCountFlow.emit(0)
+        }
     }
 
     override fun getInitState(): GameState {
