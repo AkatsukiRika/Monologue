@@ -147,6 +147,10 @@ class GameViewModel : BaseViewModel<GameState, GameEvent, GameEffect>() {
                     element.front?.let {
                         handleChangeFront(newFront = it, alpha = element.frontAlpha ?: 1f)
                     }
+                } else if (element.type == GameTypes.Effect.ShowImage) {
+                    element.image?.let {
+                        handleShowImage(image = it)
+                    }
                 } else {
                     emitEffect(GameEffect.ShowEffect(effect = element.type))
                 }
@@ -235,6 +239,16 @@ class GameViewModel : BaseViewModel<GameState, GameEvent, GameEffect>() {
             copy(
                 currentFront = newFront,
                 currentFrontAlpha = alpha
+            )
+        }
+    }
+
+    private fun handleShowImage(image: String) {
+        emitState {
+            copy(
+                currentBack = image,
+                currentFront = "",
+                showNormalText = false
             )
         }
     }

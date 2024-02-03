@@ -214,7 +214,7 @@
         <text type="normal" voice="voice_08.wav">「そんなので、自分を罰しているつもりなの？」</text>
         <text type="normal">遠く聴こえる、悪戯っぽいその声はきっと空耳。</text>
         <text type="normal" voice="voice_09.wav">「私は幸せだよ？」</text>
-        <effect type="change-front" front="girl-mature-happy-opacity" />
+        <effect type="change-front" front="girl-mature-happy" frontAlpha="0.5" />
         <effect type="change-front" front="girl-serious" />
     </scene>
 

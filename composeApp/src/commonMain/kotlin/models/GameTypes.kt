@@ -7,6 +7,7 @@ object GameTypes {
         const val InvertColor = "invert-color"
         const val TurnWhite = "turn-white"
         const val ChangeFront = "change-front"
+        const val ShowImage = "show-image"
     }
 
     object Text {
@@ -28,6 +29,7 @@ object GameTypes {
         private const val Hospital = "hospital"
         private const val Smoke = "smoke"
         private const val Trash = "trash"
+        private const val GirlPregnantPhone = "girl-pregnant-phone"
 
         fun getImage(tag: String) = when (tag) {
             Room -> "drawable/img_room.webp"
@@ -40,6 +42,7 @@ object GameTypes {
             Hospital -> "drawable/img_hospital.webp"
             Smoke -> "drawable/img_smoke.webp"
             Trash -> "drawable/img_trash.webp"
+            GirlPregnantPhone -> "drawable/img_girl_pregnant_phone.webp"
             else -> null
         }
     }
@@ -51,6 +54,7 @@ object GameTypes {
         private const val Shy = "girl-shy"
         private const val Mature = "girl-mature"
         private const val Scared = "girl-scared"
+        private const val MatureHappy = "girl-mature-happy"
 
         fun getImage(tag: String) = when (tag) {
             WryNeck -> "drawable/img_girl_wry_neck.webp"
@@ -59,6 +63,7 @@ object GameTypes {
             Shy -> "drawable/img_girl_shy.webp"
             Mature -> "drawable/img_girl_mature.webp"
             Scared -> "drawable/img_girl_scared.webp"
+            MatureHappy -> "drawable/img_girl_mature_happy.webp"
             else -> null
         }
     }
