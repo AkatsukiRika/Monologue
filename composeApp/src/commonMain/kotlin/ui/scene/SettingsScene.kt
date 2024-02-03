@@ -171,13 +171,15 @@ private fun MainColumn(navigator: Navigator) {
                     .width(156.dp)
                     .height(48.dp)
                     .background(AppColors.Color_C4C7CB),
-                strokeWidth = 2.dp
+                strokeWidth = 2.dp,
+                enabled = false
             ) {
                 PixelText(
                     text = strings.backToGame,
                     modifier = Modifier.fillMaxWidth(),
                     textAlign = TextAlign.Center,
-                    fontSize = 20.sp
+                    fontSize = 20.sp,
+                    color = Color.Black.copy(alpha = 0.2f)
                 )
             }
 

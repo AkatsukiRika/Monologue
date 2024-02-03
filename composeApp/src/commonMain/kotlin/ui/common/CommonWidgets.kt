@@ -49,6 +49,7 @@ fun PixelText(
 fun CommonButton(
     modifier: Modifier = Modifier,
     strokeWidth: Dp = 1.dp,
+    enabled: Boolean = true,
     onBoundingBoxChanged: ((Rect) -> Unit)? = null,
     onClick: () -> Unit,
     content: @Composable (RowScope) -> Unit
@@ -83,7 +84,7 @@ fun CommonButton(
             modifier = Modifier
                 .fillMaxHeight()
                 .wrapContentWidth()
-                .clickable(interactionSource = interactionSource, indication = null) {
+                .clickable(interactionSource = interactionSource, indication = null, enabled = enabled) {
                     onClick()
                 }
         ) {

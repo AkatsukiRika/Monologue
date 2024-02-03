@@ -114,13 +114,15 @@ private fun MainColumn(navigator: Navigator) {
             strokeWidth = 2.dp,
             modifier = Modifier
                 .size(width = 200.dp, height = 48.dp)
-                .background(AppColors.Color_C4C7CB)
+                .background(AppColors.Color_C4C7CB),
+            enabled = false
         ) {
             PixelText(
                 text = Global.Strings.continueGame,
                 fontSize = 18.sp,
                 modifier = Modifier.fillMaxWidth(),
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                color = Color.Black.copy(alpha = 0.2f)
             )
         }
 

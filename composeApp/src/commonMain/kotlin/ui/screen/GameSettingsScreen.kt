@@ -51,12 +51,14 @@ private fun MainColumn(
                 .width(144.dp)
                 .height(48.dp)
                 .background(AppColors.Color_C4C7CB),
-            strokeWidth = 2.dp
+            strokeWidth = 2.dp,
+            enabled = false
         ) {
             PixelText(
                 text = Global.Strings.save,
                 modifier = Modifier.fillMaxWidth(),
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                color = Color.Black.copy(alpha = 0.2f)
             )
         }
 
@@ -68,12 +70,14 @@ private fun MainColumn(
                 .width(144.dp)
                 .height(48.dp)
                 .background(AppColors.Color_C4C7CB),
-            strokeWidth = 2.dp
+            strokeWidth = 2.dp,
+            enabled = false
         ) {
             PixelText(
                 text = Global.Strings.load,
                 modifier = Modifier.fillMaxWidth(),
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                color = Color.Black.copy(alpha = 0.2f)
             )
         }
 
