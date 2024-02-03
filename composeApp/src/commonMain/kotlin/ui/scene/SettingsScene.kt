@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -23,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import global.Global
 import global.strings.BaseStrings
+import models.GameTypes
 import moe.tlaster.precompose.flow.collectAsStateWithLifecycle
 import moe.tlaster.precompose.navigation.Navigator
 import moe.tlaster.precompose.viewmodel.viewModel
@@ -80,7 +82,13 @@ private fun MainColumn(navigator: Navigator) {
 
             Spacer(modifier = Modifier.width(56.dp))
 
-            TextSpeedRow(strings = strings)
+            TextSpeedRow(
+                strings = strings,
+                state = state,
+                onSelect = {
+                    viewModel.dispatch(SettingsEvent.SetTextSpeed(it))
+                }
+            )
         }
 
         Spacer(modifier = Modifier.height(18.dp))
@@ -237,14 +245,36 @@ private fun ItemName(
 }
 
 @Composable
-private fun TextSpeedRow(modifier: Modifier = Modifier, strings: BaseStrings) {
+private fun TextSpeedRow(
+    modifier: Modifier = Modifier,
+    state: SettingsState,
+    strings: BaseStrings,
+    onSelect: (String) -> Unit
+) {
+    val slowSpeedMillis = remember {
+        GameTypes.TextSpeed.getMillis(GameTypes.TextSpeed.Slow)
+    }
+    val normalSpeedMillis = remember {
+        GameTypes.TextSpeed.getMillis(GameTypes.TextSpeed.Normal)
+    }
+    val fastSpeedMillis = remember {
+        GameTypes.TextSpeed.getMillis(GameTypes.TextSpeed.Fast)
+    }
+    val fastestSpeedMillis = remember {
+        GameTypes.TextSpeed.getMillis(GameTypes.TextSpeed.Fastest)
+    }
+
     Row(
         modifier = modifier,
         verticalAlignment = Alignment.CenterVertically
     ) {
         PixelText(
             text = strings.speedSlow,
-            fontSize = 20.sp
+            fontSize = 20.sp,
+            color = if (state.textSpeed == slowSpeedMillis) Color.White else Color.Black,
+            modifier = Modifier.clickable {
+                onSelect(GameTypes.TextSpeed.Slow)
+            }
         )
 
         Spacer(modifier = Modifier.width(12.dp))
@@ -254,7 +284,10 @@ private fun TextSpeedRow(modifier: Modifier = Modifier, strings: BaseStrings) {
         PixelText(
             text = strings.speedNormal,
             fontSize = 20.sp,
-            color = Color.White
+            color = if (state.textSpeed == normalSpeedMillis) Color.White else Color.Black,
+            modifier = Modifier.clickable {
+                onSelect(GameTypes.TextSpeed.Normal)
+            }
         )
 
         Spacer(modifier = Modifier.width(12.dp))
@@ -263,7 +296,11 @@ private fun TextSpeedRow(modifier: Modifier = Modifier, strings: BaseStrings) {
 
         PixelText(
             text = strings.speedFast,
-            fontSize = 20.sp
+            fontSize = 20.sp,
+            color = if (state.textSpeed == fastSpeedMillis) Color.White else Color.Black,
+            modifier = Modifier.clickable {
+                onSelect(GameTypes.TextSpeed.Fast)
+            }
         )
 
         Spacer(modifier = Modifier.width(12.dp))
@@ -272,7 +309,11 @@ private fun TextSpeedRow(modifier: Modifier = Modifier, strings: BaseStrings) {
 
         PixelText(
             text = strings.speedFastest,
-            fontSize = 20.sp
+            fontSize = 20.sp,
+            color = if (state.textSpeed == fastestSpeedMillis) Color.White else Color.Black,
+            modifier = Modifier.clickable {
+                onSelect(GameTypes.TextSpeed.Fastest)
+            }
         )
     }
 }

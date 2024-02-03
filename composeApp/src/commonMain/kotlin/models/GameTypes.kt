@@ -67,4 +67,19 @@ object GameTypes {
         const val Play = "play"
         const val Stop = "stop"
     }
+
+    object TextSpeed {
+        const val Slow = "slow"
+        const val Normal = "normal"
+        const val Fast = "fast"
+        const val Fastest = "fastest"
+
+        fun getMillis(speed: String) = when (speed) {
+            Slow -> 250L
+            Normal -> 100L
+            Fast -> 50L
+            Fastest -> 0L
+            else -> 100L
+        }
+    }
 }

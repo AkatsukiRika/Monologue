@@ -4,6 +4,7 @@ import global.Global
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import models.GameTypes
 import moe.tlaster.precompose.viewmodel.viewModelScope
 
 class SettingsViewModel : BaseViewModel<SettingsState, SettingsEvent, SettingsEffect>() {
@@ -17,7 +18,10 @@ class SettingsViewModel : BaseViewModel<SettingsState, SettingsEvent, SettingsEf
             }
             val bgmVolume = Global.bgmVolumeFlow.first()
             emitState {
-                copy(bgmVolume = bgmVolume)
+                copy(
+                    bgmVolume = bgmVolume,
+                    textSpeed = Global.textSpeedMillis
+                )
             }
         }
     }
@@ -30,6 +34,9 @@ class SettingsViewModel : BaseViewModel<SettingsState, SettingsEvent, SettingsEf
         when (event) {
             is SettingsEvent.ChangeLanguage -> {
                 changeLanguage(event.language)
+            }
+            is SettingsEvent.SetTextSpeed -> {
+                setTextSpeed(event.speed)
             }
             is SettingsEvent.VolumeDown -> {
                 decreaseVolume()
@@ -46,6 +53,18 @@ class SettingsViewModel : BaseViewModel<SettingsState, SettingsEvent, SettingsEf
                 appPref.setLanguage(language)
                 emitState {
                     copy(language = language)
+                }
+            }
+        }
+    }
+
+    private fun setTextSpeed(speed: String) {
+        Global.appPreferences?.let { appPref ->
+            viewModelScope.launch(Dispatchers.IO) {
+                val speedMillis = GameTypes.TextSpeed.getMillis(speed)
+                appPref.setTextSpeed(speedMillis)
+                emitState {
+                    copy(textSpeed = speedMillis)
                 }
             }
         }
@@ -78,11 +97,13 @@ class SettingsViewModel : BaseViewModel<SettingsState, SettingsEvent, SettingsEf
 
 data class SettingsState(
     val language: Int = Global.LANGUAGE_JP,
-    val bgmVolume: Int = Global.BGM_VOLUME_MAX
+    val bgmVolume: Int = Global.BGM_VOLUME_MAX,
+    val textSpeed: Long = GameTypes.TextSpeed.getMillis(GameTypes.TextSpeed.Normal)
 ) : BaseState
 
 sealed class SettingsEvent : BaseEvent {
     data class ChangeLanguage(val language: Int) : SettingsEvent()
+    data class SetTextSpeed(val speed: String) : SettingsEvent()
     data object VolumeDown : SettingsEvent()
     data object VolumeUp : SettingsEvent()
 }

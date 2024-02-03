@@ -11,6 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
+import models.GameTypes
 
 object Global {
     const val LANGUAGE_JP = 0
@@ -24,7 +25,7 @@ object Global {
 
     val bgmVolumeFlow = MutableStateFlow(BGM_VOLUME_MAX)
 
-    val textSpeedMillis: Long = 100L
+    var textSpeedMillis: Long = GameTypes.TextSpeed.getMillis(GameTypes.TextSpeed.Normal)
 
     var dataStore: DataStore<Preferences>? = null
 
@@ -47,6 +48,9 @@ object Global {
             }
             appPreferences?.getBGMVolume()?.let {
                 bgmVolumeFlow.emit(it)
+            }
+            appPreferences?.getTextSpeed()?.let {
+                textSpeedMillis = it
             }
         }
     }
