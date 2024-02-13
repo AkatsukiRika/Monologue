@@ -7,6 +7,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import com.tangping.monologue.VideoSceneAndroid
 import global.Global
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
@@ -193,4 +194,9 @@ actual fun createDataStore(): DataStore<Preferences>? {
     return createDataStoreWithDefaults {
         File(context.applicationContext.filesDir, "test.preferences_pb").path
     }
+}
+
+@Composable
+actual fun VideoScene() {
+    VideoSceneAndroid()
 }

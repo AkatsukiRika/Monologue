@@ -46,3 +46,6 @@ internal fun createDataStoreWithDefaults(
 )
 
 expect fun createDataStore(): DataStore<Preferences>?
+
+@Composable
+expect fun VideoScene()

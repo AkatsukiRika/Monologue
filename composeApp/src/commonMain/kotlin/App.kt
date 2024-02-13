@@ -16,7 +16,7 @@ fun App() {
         val navigator = rememberNavigator()
         NavHost(
             navigator = navigator,
-            initialRoute = Routes.Start
+            initialRoute = Routes.Video
         ) {
             scene(route = Routes.Start) {
                 StartScene(navigator = navigator)
@@ -32,6 +32,10 @@ fun App() {
 
             scene(route = Routes.Debug) {
                 DebugScene(navigator = navigator)
+            }
+
+            scene(route = Routes.Video) {
+                VideoScene()
             }
         }
     }
