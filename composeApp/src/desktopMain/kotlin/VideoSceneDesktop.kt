@@ -19,14 +19,17 @@ import javafx.scene.layout.StackPane
 import javafx.scene.media.Media
 import javafx.scene.media.MediaPlayer
 import javafx.scene.media.MediaView
+import moe.tlaster.precompose.navigation.Navigator
 import java.awt.Dimension
 import javax.swing.SwingUtilities
+import kotlin.system.exitProcess
 
 private const val VIDEO_FILE_NAME = "bad_end.mp4"
 
 @Composable
-fun VideoSceneDesktop() {
+fun VideoSceneDesktop(navigator: Navigator) {
     var jfxPanel by remember { mutableStateOf<JFXPanel?>(null) }
+    var mediaPlayer by remember { mutableStateOf<MediaPlayer?>(null) }
 
     LaunchedEffect(Unit) {
         SwingUtilities.invokeLater {
@@ -63,7 +66,7 @@ fun VideoSceneDesktop() {
                         "file://${tempFile.absolutePath}"
                     }
                     val media = Media(videoSource)
-                    val mediaPlayer = MediaPlayer(media)
+                    mediaPlayer = MediaPlayer(media)
                     val mediaView = MediaView(mediaPlayer)
 
                     val root = StackPane()
@@ -71,11 +74,18 @@ fun VideoSceneDesktop() {
                     root.style = "-fx-background-color: BLACK;"
                     val scene = Scene(root)
                     jfxPanel?.scene = scene
-                    mediaPlayer.play()
+                    mediaPlayer?.play()
+                    mediaPlayer?.setOnEndOfMedia {
+                        exitProcess(status = 0)
+                    }
                 }
             }
 
-            onDispose {}
+            onDispose {
+                mediaPlayer?.stop()
+                mediaPlayer?.dispose()
+                mediaPlayer = null
+            }
         }
     }
 }

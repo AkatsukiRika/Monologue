@@ -83,8 +83,10 @@ class GameViewModel : BaseViewModel<GameState, GameEvent, GameEffect>() {
                             val newScene = scenes[currentSceneIndex + 1]
                             currentScene = newScene
                             handleCurrentScene()
-                            currentSceneElement = newScene.elements[0]
-                            handleCurrentSceneElement()
+                            if (newScene.elements.isNotEmpty()) {
+                                currentSceneElement = newScene.elements[0]
+                                handleCurrentSceneElement()
+                            }
                         } else {
                             // 进入下一句对话
                             val newElement = elements[currentElementIndex + 1]
@@ -99,12 +101,16 @@ class GameViewModel : BaseViewModel<GameState, GameEvent, GameEffect>() {
 
     private fun handleCurrentScene() {
         currentScene?.let {
-            emitState {
-                copy(
-                    currentBack = it.back,
-                    currentFront = it.front ?: "",
-                    currentFrontAlpha = it.frontAlpha
-                )
+            if (it is GameModels.Ending) {
+                emitEffect(GameEffect.GoEnding(type = it.type))
+            } else {
+                emitState {
+                    copy(
+                        currentBack = it.back,
+                        currentFront = it.front ?: "",
+                        currentFrontAlpha = it.frontAlpha
+                    )
+                }
             }
         }
     }
@@ -282,4 +288,5 @@ sealed class GameEvent : BaseEvent {
 
 sealed class GameEffect : BaseEffect {
     data class ShowEffect(val effect: String) : GameEffect()
+    data class GoEnding(val type: String) : GameEffect()
 }

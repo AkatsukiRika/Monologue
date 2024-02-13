@@ -23,13 +23,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import getScenarioXML
 import global.Global
+import global.Routes
 import global.strings.StringsCN
 import models.GameTypes
 import moe.tlaster.precompose.flow.collectAsStateWithLifecycle
+import moe.tlaster.precompose.navigation.NavOptions
 import moe.tlaster.precompose.navigation.Navigator
 import moe.tlaster.precompose.viewmodel.viewModel
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
+import stopAudio
 import ui.common.NormalText
 import ui.common.ScaryText
 import ui.common.SpecialRedText
@@ -176,6 +179,12 @@ fun GameScene(navigator: Navigator) {
         viewModel.uiEffect.observeEffect {
             if (it is GameEffect.ShowEffect) {
                 effectType = it.effect
+            } else if (it is GameEffect.GoEnding) {
+                stopAudio()
+                navigator.navigate(
+                    route = Routes.Video,
+                    options = NavOptions(launchSingleTop = true)
+                )
             }
         }
     }

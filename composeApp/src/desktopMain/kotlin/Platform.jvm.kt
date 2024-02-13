@@ -14,6 +14,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import models.GameModels
+import moe.tlaster.precompose.navigation.Navigator
 import org.w3c.dom.Element
 import org.xml.sax.InputSource
 import java.io.File
@@ -114,6 +115,13 @@ actual fun parseScenarioXML(data: String): GameModels.Scenario {
             sceneObjects.add(sceneObject)
         }
 
+        val ending = scenario.getElementsByTagName("ending")
+        (ending.item(0) as? Element)?.let { element ->
+            val type = element.getAttribute("type")
+            val endingObject = GameModels.Ending(type = type)
+            sceneObjects.add(endingObject)
+        }
+
         return GameModels.Scenario(
             language = language,
             scenes = sceneObjects
@@ -208,6 +216,6 @@ actual fun createDataStore(): DataStore<Preferences>? = createDataStoreWithDefau
 }
 
 @Composable
-actual fun VideoScene() {
-    VideoSceneDesktop()
+actual fun VideoScene(navigator: Navigator) {
+    VideoSceneDesktop(navigator = navigator)
 }

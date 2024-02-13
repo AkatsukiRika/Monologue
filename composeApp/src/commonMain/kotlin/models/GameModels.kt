@@ -6,13 +6,15 @@ object GameModels {
         val scenes: List<Scene> = emptyList()
     )
 
-    data class Scene(
+    open class Scene(
         val id: Int,
         val back: String,               // 背景图片
         val front: String? = null,      // 前景图片（立绘）
         val frontAlpha: Float = 1f,     // 前景图片透明度（0～1）
         val elements: List<SceneElement> = emptyList()
     )
+
+    data class Ending(val type: String) : Scene(id = -1, back = "")
 
     data class Text(
         override val type: String,

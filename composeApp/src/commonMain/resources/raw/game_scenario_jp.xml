@@ -229,7 +229,5 @@
         <effect type="change-front" front="girl-wry-neck" />
     </scene>
 
-    <scene id="24" back="black">
-        <text type="special-white">BAD END</text>
-    </scene>
+    <ending type="bad-end" />
 </scenario>

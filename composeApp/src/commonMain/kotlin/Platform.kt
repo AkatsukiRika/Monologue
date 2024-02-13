@@ -11,6 +11,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import models.GameModels
+import moe.tlaster.precompose.navigation.Navigator
 import okio.Path.Companion.toPath
 
 @Composable
@@ -48,4 +49,4 @@ internal fun createDataStoreWithDefaults(
 expect fun createDataStore(): DataStore<Preferences>?
 
 @Composable
-expect fun VideoScene()
+expect fun VideoScene(navigator: Navigator)
