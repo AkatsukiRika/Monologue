@@ -142,6 +142,7 @@ private var voicePlayer: MediaPlayer? = null
 actual fun playAudioFile(fileName: String, loop: Boolean) {
     if (!isJavaFXPlatformInit) {
         Platform.startup {}
+        Platform.setImplicitExit(false)
         isJavaFXPlatformInit = true
     }
 

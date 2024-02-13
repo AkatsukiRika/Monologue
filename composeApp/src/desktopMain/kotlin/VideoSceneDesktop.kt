@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.awt.SwingPanel
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
+import global.Routes
 import javafx.application.Platform
 import javafx.embed.swing.JFXPanel
 import javafx.scene.Scene
@@ -19,10 +20,10 @@ import javafx.scene.layout.StackPane
 import javafx.scene.media.Media
 import javafx.scene.media.MediaPlayer
 import javafx.scene.media.MediaView
+import moe.tlaster.precompose.navigation.NavOptions
 import moe.tlaster.precompose.navigation.Navigator
 import java.awt.Dimension
 import javax.swing.SwingUtilities
-import kotlin.system.exitProcess
 
 private const val VIDEO_FILE_NAME = "bad_end.mp4"
 
@@ -76,7 +77,10 @@ fun VideoSceneDesktop(navigator: Navigator) {
                     jfxPanel?.scene = scene
                     mediaPlayer?.play()
                     mediaPlayer?.setOnEndOfMedia {
-                        exitProcess(status = 0)
+                        navigator.navigate(
+                            route = Routes.Start,
+                            options = NavOptions(launchSingleTop = true)
+                        )
                     }
                 }
             }

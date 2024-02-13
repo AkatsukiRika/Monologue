@@ -184,6 +184,7 @@ class GameViewModel : BaseViewModel<GameState, GameEvent, GameEffect>() {
                 showNormalText = false,
                 showScaryText = false,
                 showSpecialRedText = false,
+                showSpecialYellowText = false,
                 currentText = text
             )
         }
@@ -197,6 +198,7 @@ class GameViewModel : BaseViewModel<GameState, GameEvent, GameEffect>() {
                 showNormalText = false,
                 showScaryText = false,
                 showSpecialRedText = true,
+                showSpecialYellowText = false,
                 currentText = text
             )
         }
@@ -210,6 +212,7 @@ class GameViewModel : BaseViewModel<GameState, GameEvent, GameEffect>() {
                 showNormalText = false,
                 showScaryText = false,
                 showSpecialRedText = false,
+                showSpecialYellowText = false,
                 currentText = text,
                 characterName = characterName,
                 timeText = timeText
@@ -225,6 +228,7 @@ class GameViewModel : BaseViewModel<GameState, GameEvent, GameEffect>() {
                 showNormalText = false,
                 showScaryText = true,
                 showSpecialRedText = false,
+                showSpecialYellowText = false,
                 currentText = text
             )
         }
