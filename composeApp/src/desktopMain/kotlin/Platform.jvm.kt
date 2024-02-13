@@ -213,7 +213,7 @@ actual fun setAudioVolume(volume: Float) {
 }
 
 actual fun createDataStore(): DataStore<Preferences>? = createDataStoreWithDefaults {
-    DesktopUtils.getHomeDirectory() + File.separator + "test.preferences_pb"
+    DesktopUtils.getHomeDirectory() + File.separator + "monologue.preferences_pb"
 }
 
 @Composable
