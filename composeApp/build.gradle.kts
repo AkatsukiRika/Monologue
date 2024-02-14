@@ -104,9 +104,13 @@ compose.desktop {
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "com.tangping.monologue"
+            packageName = "Monologue"
             packageVersion = "1.0.0"
             modules("jdk.unsupported")
+
+            macOS {
+                iconFile.set(project.file("icon.icns"))
+            }
         }
     }
 }
