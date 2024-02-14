@@ -106,7 +106,7 @@ compose.desktop {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "Monologue"
             packageVersion = "1.0.0"
-            modules("jdk.unsupported")
+            modules("jdk.unsupported", "jdk.unsupported.desktop")
 
             macOS {
                 iconFile.set(project.file("icon.icns"))
