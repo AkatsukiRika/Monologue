@@ -111,6 +111,10 @@ compose.desktop {
             macOS {
                 iconFile.set(project.file("icon.icns"))
             }
+
+            windows {
+                iconFile.set(project.file("icon.ico"))
+            }
         }
     }
 }
